@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atlas Armónico</title>
+<meta name="description" content="Piano de 7 octavas con 96 acordes, 71 escalas y la digitación de ambas manos en las 21 tónicas. Para Mac, Windows y web.">
+<meta property="og:title" content="Atlas Armónico">
+<meta property="og:description" content="Cada acorde, cada escala y cada dedo, en un piano de 7 octavas. / Every chord, every scale, every finger on a 7-octave piano.">
+<meta name="theme-color" content="#0e0d0f">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Music&display=swap" rel="stylesheet">
+<style>
+/* Layout: página de venta de una sola columna; la demo real del piano es el centro de la página */
+:root{
+  --bg:#0e0d0f; --panel:#18161a; --panel-2:#221f24; --line:#322d33;
+  --fg:#efe8db; --muted:#a59c8f; --dim:#6f675e;
+  --brass:#d6ae60; --on-brass:#1d160a; --felt:#8e232b;
+  --f-display:'Cormorant Garamond','Noto Music',Georgia,serif;
+  --f-body:'Manrope','Noto Music',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+[data-lang="es"] .en,[data-lang="en"] .es{display:none!important}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px;flex-wrap:wrap}
+.logo{font-family:var(--f-display);font-weight:600;font-size:26px;text-decoration:none;line-height:1}
+.logo em{color:var(--brass);font-weight:500}
+.navr{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{border:0;background:none;color:var(--muted);font:600 13px var(--f-body);padding:6px 10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--panel-2);color:var(--fg);box-shadow:inset 0 -2px 0 var(--brass)}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;font-size:15px;padding:12px 20px;border-radius:999px;border:1px solid var(--line);background:var(--panel-2)}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--brass);color:var(--on-brass);border-color:var(--brass)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.sm{font-size:13px;padding:8px 14px}
+.btn.soon{background:var(--panel-2);color:var(--muted);border-color:var(--line);cursor:default}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+.hero{padding-block:clamp(48px,8vw,96px) 32px;display:grid;gap:22px;justify-items:start}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);font-weight:800}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(44px,7vw,88px);line-height:.98;margin:0;max-width:16ch;text-wrap:balance;letter-spacing:-.01em}
+h1 em{color:var(--brass);font-weight:500}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:60ch;margin:0}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.fine{font-size:13px;color:var(--muted)}
+
+.stage{padding-block:16px 56px}
+.frame{border:1px solid #2b272c;border-radius:20px;overflow:hidden;background:#0b0a0c;box-shadow:0 40px 80px -40px #000}
+.frame .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #2b272c;font:500 12px var(--f-mono);color:var(--dim)}
+.frame .bar i{width:10px;height:10px;border-radius:50%;background:#3a353c}
+.frame .bar span{margin-left:8px}
+.frame iframe{display:block;width:100%;height:min(1500px,190vh);border:0;background:var(--bg)}
+.felt{height:6px;background:linear-gradient(180deg,#a02c34,#5b141a)}
+.caption{text-align:center;color:var(--muted);font-size:14px;margin:14px 0 0}
+
+section h2{font-family:var(--f-display);font-weight:600;font-size:clamp(34px,4.5vw,52px);line-height:1.05;margin:0 0 10px;text-wrap:balance}
+section .sub{color:var(--muted);margin:0 0 28px;max-width:62ch}
+.block{padding-block:56px;border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+.card .num{font-family:var(--f-display);font-size:44px;font-weight:700;color:var(--brass);line-height:1}
+.card h3{margin:8px 0 6px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:14.5px}
+.who{display:flex;flex-wrap:wrap;gap:10px}
+.who span{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:600;font-size:15px;background:var(--panel)}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
+th,td{padding:12px 16px;border-bottom:1px solid var(--line);text-align:left}
+th{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+td.y{color:var(--brass);font-weight:800}
+td.n{color:var(--dim)}
+tr:last-child td{border-bottom:0}
+
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:stretch}
+.price{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.price.main{border-color:var(--brass);background:color-mix(in oklab,var(--brass) 7%,var(--panel))}
+.price h3{margin:0;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.amount{font-family:var(--f-display);font-weight:700;font-size:64px;line-height:1}
+.amount small{font-size:22px;color:var(--muted);font-weight:500}
+.amount s{font-size:28px;color:var(--dim);font-weight:500;margin-left:8px}
+.price ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px;display:grid;gap:6px}
+.price .btn{justify-content:center;margin-top:auto}
+
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:700;font-size:17px}
+details p{color:var(--muted);margin:10px 0 0;max-width:70ch}
+footer{border-top:1px solid var(--line);padding-block:32px;color:var(--dim);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">Atlas <em>Armónico</em></a>
+    <div class="navr">
+      <div class="seg" id="lang"><button data-l="es" aria-pressed="true">ES</button><button data-l="en" aria-pressed="false">EN</button></div>
+      <a class="btn sm" href="app/index.html"><span class="es">Probar gratis</span><span class="en">Try it free</span></a>
+      <a class="btn sm primary" href="" data-buy target="_blank" rel="noopener"><span class="es">Comprar</span><span class="en">Buy</span></a>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap hero">
+  <span class="eyebrow"><span class="es">Piano de 7 octavas · Mac, Windows y web</span><span class="en">7-octave piano · Mac, Windows and web</span></span>
+  <h1><span class="es">Cada acorde, cada escala <em>y cada dedo.</em></span><span class="en">Every chord, every scale, <em>every finger.</em></span></h1>
+  <p class="lede"><span class="es">Elige una tónica y un acorde, y míralo encendido en el teclado con el número del dedo que lo toca, en las dos manos. 96 acordes, 71 escalas y las 21 tónicas, escritas con la ortografía correcta.</span><span class="en">Pick a root and a chord and see it lit on the keyboard with the number of the finger that plays it, for both hands. 96 chords, 71 scales and all 21 keys, spelled correctly.</span></p>
+  <div class="ctas">
+    <a class="btn primary" href="" data-buy target="_blank" rel="noopener"><span class="es">Comprar por US$4.99</span><span class="en">Buy for US$4.99</span></a>
+    <a class="btn" href="#demo"><span class="es">Probar gratis</span><span class="en">Try it free</span></a>
+  </div>
+  <span class="fine"><span class="es">Pago único, sin suscripción. Pruébala completa 5 veces antes de pagar.</span><span class="en">One-time payment, no subscription. Try the full app 5 times before you pay.</span></span>
+</header>
+
+<section class="wrap stage" id="demo">
+  <div class="frame">
+    <div class="bar"><i></i><i></i><i></i><span class="es">Prueba gratuita · tócala con el ratón o el teclado</span><span class="en">Free trial · play it with your mouse or keyboard</span></div>
+    <div class="felt"></div>
+    <iframe src="app/index.html" title="Atlas Armónico demo" loading="lazy" allow="autoplay"></iframe>
+  </div>
+  <p class="caption"><span class="es">Es la app completa. Tienes 5 usos gratis; después, un solo pago la desbloquea para siempre.</span><span class="en">This is the full app. You get 5 free uses; after that, one payment unlocks it forever.</span></p>
+</section>
+
+<section class="wrap block">
+  <h2><span class="es">Lo que hace</span><span class="en">What it does</span></h2>
+  <p class="sub"><span class="es">Pensado para estudiar: todo lo que ves en pantalla tiene nombre, fórmula y digitación.</span><span class="en">Built for practice: everything on screen has a name, a formula and a fingering.</span></p>
+  <div class="grid">
+    <div class="card"><div class="num">96</div><h3><span class="es">Acordes, de la tríada a la 13ª</span><span class="en">Chords, from triads to 13ths</span></h3><p><span class="es">Sextas, séptimas, novenas, oncenas, trecenas, dominantes alterados, sextas aumentadas, Tristán, Scriabin y voicings cuartales.</span><span class="en">Sixths, sevenths, ninths, elevenths, thirteenths, altered dominants, augmented sixths, Tristan, Scriabin and quartal voicings.</span></p></div>
+    <div class="card"><div class="num">71</div><h3><span class="es">Escalas y modos</span><span class="en">Scales and modes</span></h3><p><span class="es">Modos griegos, menor armónica y melódica con sus modos, mayor armónica, pentatónicas, blues, bebop, simétricas, ragas y modos de Messiaen.</span><span class="en">Church modes, harmonic and melodic minor with their modes, harmonic major, pentatonics, blues, bebop, symmetrical scales, ragas and Messiaen modes.</span></p></div>
+    <div class="card"><div class="num">1–5</div><h3><span class="es">Digitación de ambas manos</span><span class="en">Fingering for both hands</span></h3><p><span class="es">Digitación estándar de los métodos de técnica en escalas mayores y menores, con un diagrama de manos que marca qué dedo toca cada tecla.</span><span class="en">Standard method fingerings for major and minor scales, with a hand diagram that shows which finger plays each key.</span></p></div>
+    <div class="card"><div class="num">21</div><h3><span class="es">Tónicas, bien escritas</span><span class="en">Roots, spelled right</span></h3><p><span class="es">De C a C♭ y B♯: cada nota con su letra correcta, dobles alteraciones incluidas, y la lista del acorde en todas las tónicas.</span><span class="en">From C to C♭ and B♯: every note with its correct letter, double accidentals included, plus the chord listed in every key.</span></p></div>
+    <div class="card"><div class="num">85</div><h3><span class="es">Teclas reales</span><span class="en">Real keys</span></h3><p><span class="es">Siete octavas con las teclas negras colocadas como en un piano real, sonido de piano y teclado del ordenador para tocar.</span><span class="en">Seven octaves with black keys placed as on a real piano, piano sound, and computer-keyboard playing.</span></p></div>
+    <div class="card"><div class="num">?</div><h3><span class="es">Identificador de acordes</span><span class="en">Chord identifier</span></h3><p><span class="es">Toca unas teclas y te dice qué acorde es, con su inversión y todas sus lecturas posibles.</span><span class="en">Press some keys and it names the chord, with its inversion and every possible reading.</span></p></div>
+  </div>
+</section>
+
+<section class="wrap block">
+  <h2><span class="es">Para quién es</span><span class="en">Who it is for</span></h2>
+  <p class="sub"><span class="es">Para quien quiere entender lo que toca, no solo memorizarlo.</span><span class="en">For anyone who wants to understand what they play, not just memorise it.</span></p>
+  <div class="who">
+    <span class="es">Estudiantes de piano</span><span class="en">Piano students</span>
+    <span class="es">Profesores y academias</span><span class="en">Teachers and schools</span>
+    <span class="es">Músicos de iglesia</span><span class="en">Church musicians</span>
+    <span class="es">Pianistas de jazz</span><span class="en">Jazz pianists</span>
+    <span class="es">Compositores y productores</span><span class="en">Composers and producers</span>
+    <span class="es">Guitarristas que aprenden teclado</span><span class="en">Guitarists learning keys</span>
+  </div>
+</section>
+
+<section class="wrap block">
+  <h2><span class="es">Prueba gratis y versión completa</span><span class="en">Free trial vs full version</span></h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th></th><th><span class="es">Prueba</span><span class="en">Trial</span></th><th><span class="es">Completa</span><span class="en">Full</span></th></tr></thead>
+    <tbody>
+      <tr><td><span class="es">Los 96 acordes y las 71 escalas</span><span class="en">All 96 chords and 71 scales</span></td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td><span class="es">Digitación de ambas manos y diagrama</span><span class="en">Fingering for both hands and diagram</span></td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td><span class="es">Las 21 tónicas e identificador de acordes</span><span class="en">All 21 roots and chord identifier</span></td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td><span class="es">Usos</span><span class="en">Uses</span></td><td>5</td><td class="y"><span class="es">Ilimitados</span><span class="en">Unlimited</span></td></tr>
+      <tr><td><span class="es">App para Mac y Windows, sin internet</span><span class="en">Mac and Windows app, works offline</span></td><td class="n">—</td><td class="y">✓</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="wrap block" id="precio">
+  <h2><span class="es">Precio</span><span class="en">Pricing</span></h2>
+  <p class="sub"><span class="es">Menos que una partitura. Pagas una vez y es tuyo, con las actualizaciones de la versión 1.</span><span class="en">Less than a piece of sheet music. Pay once and it is yours, including every version 1 update.</span></p>
+  <div class="prices">
+    <div class="price main">
+      <h3><span class="es">Licencia de por vida</span><span class="en">Lifetime licence</span></h3>
+      <div class="amount"><small>US$</small>4.99</div>
+      <ul>
+        <li><span class="es">Todos los acordes, escalas y digitaciones</span><span class="en">Every chord, scale and fingering</span></li>
+        <li><span class="es">App para Mac y Windows, y versión web</span><span class="en">Mac and Windows app, plus web version</span></li>
+        <li><span class="es">Español e inglés</span><span class="en">Spanish and English</span></li>
+        <li><span class="es">Actualizaciones 1.x incluidas</span><span class="en">1.x updates included</span></li>
+      </ul>
+      <a class="btn primary" href="" data-buy target="_blank" rel="noopener"><span class="es">Comprar</span><span class="en">Buy now</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap block">
+  <h2><span class="es">Preguntas frecuentes</span><span class="en">FAQ</span></h2>
+  <details><summary><span class="es">¿En qué equipos funciona?</span><span class="en">What does it run on?</span></summary><p><span class="es">En Mac (macOS 12 o superior, Apple Silicon e Intel), en Windows 10 y 11, y en cualquier navegador moderno.</span><span class="en">Mac (macOS 12 or later, Apple Silicon and Intel), Windows 10 and 11, and any modern browser.</span></p></details>
+  <details><summary><span class="es">¿Necesito internet?</span><span class="en">Do I need the internet?</span></summary><p><span class="es">No. Las apps de Mac y Windows funcionan sin conexión.</span><span class="en">No. The Mac and Windows apps work offline.</span></p></details>
+  <details><summary><span class="es">¿Cómo funciona la prueba?</span><span class="en">How does the trial work?</span></summary><p><span class="es">Abres la app completa en el navegador y la usas 5 veces sin pagar ni registrarte. Después te pide comprarla.</span><span class="en">You open the full app in your browser and use it 5 times with no payment or sign-up. After that it asks you to buy.</span></p></details>
+  <details><summary><span class="es">¿Es una suscripción?</span><span class="en">Is it a subscription?</span></summary><p><span class="es">No. Es un pago único.</span><span class="en">No. It is a one-time payment.</span></p></details>
+  <details><summary><span class="es">¿De dónde salen las digitaciones?</span><span class="en">Where do the fingerings come from?</span></summary><p><span class="es">Las escalas mayores y menores usan la digitación estándar de los métodos de técnica. Para el resto, la app aplica las reglas clásicas: pulgar en teclas blancas, paso del pulgar tras el 3 o el 4, y un 4 por octava. Los acordes de 9ª a 13ª se reparten entre las dos manos, como en los métodos de piano moderno.</span><span class="en">Major and minor scales use the standard fingerings from technique methods. For the rest, the app applies the classic rules: thumb on white keys, thumb passing after 3 or 4, and one 4th finger per octave. Ninth to thirteenth chords are split between the hands, as in contemporary piano methods.</span></p></details>
+
+</section>
+
+<footer><div class="wrap"><span>© 2026 Atlas Armónico</span></div></footer>
+
+<script>
+(function(){
+  const root=document.documentElement;
+  let lang=(navigator.language||'es').toLowerCase().startsWith('es')?'es':'en';
+  try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');if(p.lang==='es'||p.lang==='en')lang=p.lang}catch(e){}
+  function set(l){
+    lang=l;root.dataset.lang=l;root.lang=l;
+    document.querySelectorAll('#lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
+    try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');p.lang=l;localStorage.setItem('atlas-prefs',JSON.stringify(p))}catch(e){}
+  }
+  document.getElementById('lang').addEventListener('click',e=>{const b=e.target.closest('button');if(b){set(b.dataset.l);const f=document.querySelector('iframe');if(f)try{f.contentWindow.location.reload()}catch(err){}}});
+  set(lang);
+  /* Sin tienda configurada no se muestra ningún enlace de compra (nunca un enlace roto). */
+  document.querySelectorAll('[data-buy]').forEach(el=>{
+    if(/^https:\/\//.test(el.getAttribute('href')||''))return;
+    const s=document.createElement('span');s.className=el.className.replace('primary','')+' soon';
+    s.innerHTML='<span class="es">Muy pronto a la venta</span><span class="en">Coming soon</span>';el.replaceWith(s);
+  });
+})();
+</script>
+</body>
+</html>
