@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-lang="es">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -208,7 +208,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <script>
 (function(){
   const root=document.documentElement;
-  let lang=(navigator.language||'es').toLowerCase().startsWith('es')?'es':'en';
+  let lang='en';
   try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');if(p.lang==='es'||p.lang==='en')lang=p.lang}catch(e){}
   function set(l){
     lang=l;root.dataset.lang=l;root.lang=l;

@@ -794,7 +794,7 @@ const same=(r,s)=>r.l===s.l&&r.a===s.a;
 
 /* ================= Estado ================= */
 const S={tpBase:null,tpSemis:0,mode:'chord',trText:'G D Em C',trFrom:'auto',trSel:0,trInit:false,root:{l:0,a:0},chordId:'maj7',scaleId:'s0',oct:4,inv:0,lat:false,
-  lang:((navigator.language||'es').toLowerCase().startsWith('es')?'es':'en'),
+  lang:'en',
   hand:'R',cat:0,scat:0,q:'',overlay:null,ids:new Set(),vol:.8,kw:null};
 try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');
   if(typeof p.lat==='boolean')S.lat=p.lat;if(typeof p.vol==='number')S.vol=p.vol;
