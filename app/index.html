@@ -359,6 +359,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid #3a353c;border-bot
     <div class="under">
       <span id="kbHint"></span>
       <span id="midC"></span>
+      <span id="support" hidden></span>
     </div>
   </section>
 
@@ -371,7 +372,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid #3a353c;border-bot
 <script>
 window.__errs=[];addEventListener('error',e=>window.__errs.push(String(e.message)));addEventListener('unhandledrejection',e=>window.__errs.push(String(e.reason)));
 /* Edición: 'full' (versión de pago), 'trial' (prueba completa con usos limitados) o 'demo'. scripts/build.py cambia este valor. */
-const APP={edition:'trial',buyUrl:'',price:'US$4.99',trialUses:5,freeChordCats:[0,2],freeScaleCats:[0,4]};
+const APP={edition:'trial',buyUrl:'',support:'atlasarmonico.app@gmail.com',price:'US$4.99',trialUses:5,freeChordCats:[0,2],freeScaleCats:[0,4]};
 /* ================= Teoría ================= */
 const LET=['C','D','E','F','G','A','B'], SOL=['Do','Re','Mi','Fa','Sol','La','Si'], LPC=[0,2,4,5,7,9,11];
 const ACC={'-2':'𝄫','-1':'♭','0':'','1':'♯','2':'𝄪'};
@@ -433,6 +434,7 @@ const STR={
   fShell:'Voicing a dos manos, como lo enseñan los métodos de piano moderno: la izquierda toca fundamental y 7ª (o 5ª si no hay 7ª); la derecha toca la 3ª y las tensiones, juntas dentro de una octava. Así ninguna mano se estira más de una octava.',
   fSplit:'Este acorde abarca más de una octava tal como está escrito: la izquierda toma los graves y la derecha los agudos.',
   fGeneric:'Digitación sugerida para las teclas marcadas.',
+  support:'Soporte',
   tp:'Transporte', tpOrig:'tono original', tpDown2:'Bajar un tono', tpDown1:'Bajar medio tono', tpUp1:'Subir medio tono', tpUp2:'Subir un tono', tpReset:'Volver al tono original',
   tpOff:n=>{const a=Math.abs(n),t=Math.floor(a/2),h=a%2;const txt=(t?t:'')+(h?'½':'');return (n>0?'+':'−')+txt+(a===2?' tono':a===1?' tono':' tonos')},
   fSlash:'Acorde con bajo: la izquierda toca la nota del bajo (la que va después de la barra) con el dedo 5, y la derecha el acorde.', trHear:'Oír el acorde',
@@ -458,7 +460,7 @@ const STR={
   trialLeft:n=>n===1?'Prueba: último uso':`Prueba: quedan ${n} usos`, buyFor:p=>`Comprar · ${p}`,
   pwTitle:'Tu prueba gratuita terminó',
   pwText:n=>`Usaste Atlas Armónico ${n} veces. Desbloquéalo para siempre con un solo pago: los 96 acordes, las 71 escalas, la digitación de ambas manos y las apps para Mac y Windows.`,
-  pwBuy:'Comprar ahora, pago único', pwOwned:'¿Ya la compraste? Descarga la versión completa desde el enlace que llegó a tu correo de compra.',
+  pwBuy:'Comprar ahora, pago único', pwOwned:'¿Ya la compraste? Descarga la versión completa desde el enlace que llegó a tu correo de compra. ¿Dudas? Escríbenos a ',
   demoBanner:'Estás usando la demo gratuita: tríadas, séptimas, modos griegos y pentatónicas en las 21 tónicas, con digitación. La versión completa desbloquea los 96 acordes, las 71 escalas y las apps para Mac y Windows.',
   int12:['Unísono / octava','2ª menor','2ª mayor','3ª menor','3ª mayor','4ª justa','Tritono (4ª aum. / 5ª dism.)','5ª justa','6ª menor','6ª mayor','7ª menor','7ª mayor'],
   steps:{1:'S',2:'T',3:'T½',4:'2T'},
@@ -501,6 +503,7 @@ const STR={
   fShell:'Two-hand voicing, as taught in contemporary piano methods: the left hand plays root and 7th (or 5th when there is no 7th); the right hand plays the 3rd and the tensions, close together within an octave. No hand stretches beyond an octave.',
   fSplit:'As written, this chord spans more than an octave: the left hand takes the low notes and the right hand the high ones.',
   fGeneric:'Suggested fingering for the marked keys.',
+  support:'Support',
   tp:'Transpose', tpOrig:'original key', tpDown2:'Down a whole step', tpDown1:'Down a half step', tpUp1:'Up a half step', tpUp2:'Up a whole step', tpReset:'Back to the original key',
   tpOff:n=>{const a=Math.abs(n),t=Math.floor(a/2),h=a%2;const txt=(t?t:'')+(h?'½':'');return (n>0?'+':'−')+txt+(a<=2?' step':' steps')},
   fSlash:'Slash chord: the left hand plays the bass note (the one after the slash) with finger 5, and the right hand plays the chord.', trHear:'Hear the chord',
@@ -526,7 +529,7 @@ const STR={
   trialLeft:n=>n===1?'Trial: last use':`Trial: ${n} uses left`, buyFor:p=>`Buy · ${p}`,
   pwTitle:'Your free trial has ended',
   pwText:n=>`You have used Atlas Armónico ${n} times. Unlock it forever with a single payment: all 96 chords, 71 scales, fingering for both hands and the Mac and Windows apps.`,
-  pwBuy:'Buy now, one-time payment', pwOwned:'Already bought it? Download the full version from the link in your purchase email.',
+  pwBuy:'Buy now, one-time payment', pwOwned:'Already bought it? Download the full version from the link in your purchase email. Questions? Email ',
   demoBanner:'You are using the free demo: triads, seventh chords, church modes and pentatonics in all 21 keys, with fingering. The full version unlocks all 96 chords, 71 scales and the Mac and Windows apps.',
   int12:['Unison / octave','minor 2nd','major 2nd','minor 3rd','major 3rd','perfect 4th','Tritone (aug. 4th / dim. 5th)','perfect 5th','minor 6th','major 6th','minor 7th','major 7th'],
   steps:{1:'H',2:'W',3:'W½',4:'2W'},
@@ -1413,6 +1416,7 @@ function renderStatic(){
   document.querySelectorAll('#nota button').forEach(b=>b.setAttribute('aria-pressed',(b.dataset.lat==='1')===S.lat));
   $('#notaLbl').textContent=T('names');
   $('#rootTitle').textContent=S.mode==='tr'?T('trTarget'):T('root');$('#rootNote').textContent=T('rootNote');
+  const sp=$('#support');sp.hidden=!APP.support;sp.textContent=APP.support?T('support')+': '+APP.support:'';
   $('#zfit').textContent=T('fit');$('#kbHint').innerHTML=T('kbHint');$('#midC').textContent=T('midC');
   $('#rootPanel').hidden=S.mode==='id';
   const bd=$('#demoBadge'),by=$('#buy');
@@ -1420,7 +1424,7 @@ function renderStatic(){
   by.hidden=!(isDemo||isTrial)||!storeReady;by.href=APP.buyUrl;by.textContent=isTrial?T('buyFor')(APP.price):T('buy');
   const pw=$('#paywall');pw.hidden=!(isTrial&&TRIAL.over);
   if(!pw.hidden){$('#pwTitle').textContent=T('pwTitle');$('#pwText').textContent=T('pwText')(APP.trialUses);
-    $('#pwPrice').textContent=APP.price;const pb=$('#pwBuy');pb.href=APP.buyUrl;pb.textContent=T('pwBuy');$('#pwOwned').textContent=T('pwOwned');}
+    $('#pwPrice').textContent=APP.price;const pb=$('#pwBuy');pb.href=APP.buyUrl;pb.textContent=T('pwBuy');$('#pwOwned').textContent=T('pwOwned')+(APP.support||'—');}
 }
 function renderRoots(){
   const labels={'1':'♯','0':'♮','-1':'♭'};let h='';
@@ -1681,7 +1685,7 @@ window.__atlasSelfTest=function(){
   const fail=m=>{if(out.fails.length<60)out.fails.push(m)};
   const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'&&!e.closest('[hidden]')};
   out.keys=document.querySelectorAll('.key').length;out.white=document.querySelectorAll('.key.white').length;out.black=document.querySelectorAll('.key.black').length;
-  out.lit=document.querySelectorAll('.key.on').length;out.storeReady=storeReady;
+  out.lit=document.querySelectorAll('.key.on').length;out.storeReady=storeReady;out.supportShown=($('#support')&&!$('#support').hidden)?$('#support').textContent:'';
   out.visibleExternalLinks=[...document.querySelectorAll('a[href^="http"]')].filter(a=>a.offsetParent!==null||a.closest('#paywall:not([hidden])')).map(a=>a.href);out.paywall=vis('paywall');out.buy=vis('buy');
   out.paywallTitle=($('#pwTitle')||{}).textContent||'';out.sym=($('.sym')||{}).textContent||'';
   out.chips=document.querySelectorAll('#library .chip').length;out.hands=!!document.querySelector('svg.hands');
