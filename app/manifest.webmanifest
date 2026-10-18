@@ -1,8 +1,8 @@
 {
   "name": "Atlas Armónico",
   "short_name": "Atlas",
-  "description": "Piano de 7 octavas con acordes, escalas y digitación en las 21 tónicas.",
-  "lang": "es",
+  "description": "7-octave piano with chords, scales and fingering in all 21 keys.",
+  "lang": "en",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
