@@ -1,6 +1,6 @@
 /* Atlas Armónico: guarda la app para usarla sin conexión.
    Sube VERSION cada vez que publiques cambios para que los usuarios reciban la nueva versión. */
-const VERSION = 'atlas-v1.1.0';
+const VERSION = 'atlas-v1.2.0';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png'];
 
