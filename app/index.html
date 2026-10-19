@@ -397,7 +397,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid #3a353c;border-bot
 <script>
 window.__errs=[];addEventListener('error',e=>window.__errs.push(String(e.message)));addEventListener('unhandledrejection',e=>window.__errs.push(String(e.reason)));
 /* Edición: 'full' (versión de pago), 'trial' (prueba completa con usos limitados) o 'demo'. scripts/build.py cambia este valor. */
-const APP={edition:'trial',buyUrl:'https://pay.hotmart.com/H108088291R',support:'atlasarmonico.app@gmail.com',price:'US$4.99',trialUses:5,freeChordCats:[0,2],freeScaleCats:[0,4],licenseApi:'',licensePub:''};
+const APP={edition:'trial',buyUrl:'https://pay.hotmart.com/H108088291R',support:'atlasarmonico.app@gmail.com',price:'US$4.99',trialUses:5,freeChordCats:[0,2],freeScaleCats:[0,4],licenseApi:'https://atlas-armonico-license.atlasarmonico-app.workers.dev',licensePub:'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEbRNlihhYk19H-f4fPGMSdiIjOidOW9ovSYTZZaqHEjhHABhSZ3Y7Q9lfpPB0Oe8wVUIbXFi-N09Jm-pTr_CECQ'};
 /* ================= Teoría ================= */
 const LET=['C','D','E','F','G','A','B'], SOL=['Do','Re','Mi','Fa','Sol','La','Si'], LPC=[0,2,4,5,7,9,11];
 const ACC={'-2':'𝄫','-1':'♭','0':'','1':'♯','2':'𝄪'};
@@ -1953,8 +1953,12 @@ window.__atlasSelfTest=function(){
     click('#library .chip[data-id="m"]');click('#roots .rb[data-l="5"][data-a="0"]');click('#tp [data-tp="1"]');ok(symText(S.root,curChord())==='B♭m','Am +½ = B♭m');
     click('#tp [data-tp="2"]');ok(symText(S.root,curChord())==='Cm','B♭m +1 = Cm');
     click('#tp [data-tp="back"]');ok(symText(S.root,curChord())==='Am','botón volver al tono original');
-    document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowUp'}));ok(symText(S.root,curChord())==='B♭m','flecha ↑ sube medio tono');
-    document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',shiftKey:true}));ok(symText(S.root,curChord())==='G♯m','Mayús+↓ baja un tono (G♯m, la escritura habitual)');
+    if(!trialLocked()){
+      document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowUp'}));ok(symText(S.root,curChord())==='B♭m','flecha ↑ sube medio tono');
+      document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',shiftKey:true}));ok(symText(S.root,curChord())==='G♯m','Mayús+↓ baja un tono (G♯m, la escritura habitual)');
+    }else{
+      document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowUp'}));ok(symText(S.root,curChord())==='Am','prueba vencida: el teclado del ordenador no salta la pantalla de compra');
+    }
     click('#tabs button[data-mode="scale"]');click('#library .chip[data-id="s0"]');click('#roots .rb[data-l="0"][data-a="0"]');
     click('#tp [data-tp="1"]');ok(nm(S.root)==='D♭','escala de C mayor +½ = D♭ mayor');
     click('#library .chip[data-id="s5"]');click('#roots .rb[data-l="5"][data-a="0"]');click('#tp [data-tp="1"]');ok(nm(S.root)==='B♭','La menor +½ = Si♭ menor');
