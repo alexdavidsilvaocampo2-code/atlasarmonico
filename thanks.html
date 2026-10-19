@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas Armónico · Download and activate</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0d0f;--panel:#18161a;--line:#322d33;--fg:#f3eee4;--muted:#b6ada0;--brass:#d6ae60;--on-brass:#1d160a}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Manrope,system-ui,sans-serif;line-height:1.55}
+[data-lang="es"] .en,[data-lang="en"] .es{display:none!important}
+.wrap{max-width:860px;margin:0 auto;padding:28px 16px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600}.brand i{color:var(--brass)}
+.lang button{background:none;border:1px solid var(--line);color:var(--muted);padding:6px 10px;border-radius:8px;cursor:pointer;font:inherit;font-weight:700}
+.lang button[aria-pressed=true]{color:var(--fg);border-color:var(--brass)}
+h1{font-family:'Cormorant Garamond',serif;font-size:44px;line-height:1.05;margin:28px 0 8px}h1 i{color:var(--brass)}
+.lead{color:var(--muted);margin:0 0 22px}
+.code{display:inline-block;border:1px dashed var(--brass);border-radius:10px;padding:6px 12px;font-weight:800;letter-spacing:.04em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:18px 0 26px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.card h2{margin:0;font-size:19px}.card p{margin:0;color:var(--muted);font-size:14.5px}
+.btn{display:inline-flex;justify-content:center;text-decoration:none;background:var(--brass);color:var(--on-brass);font-weight:800;padding:11px 14px;border-radius:999px}
+.btn.alt{background:none;border:1px solid var(--brass);color:var(--brass)}
+ol{margin:0;padding-left:20px}ol li{margin:6px 0}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
+.box h2{margin:0 0 10px;font-size:21px}
+small,.note{color:var(--muted);font-size:13.5px}
+a{color:var(--brass)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand">Atlas <i>Armónico</i></div>
+    <div class="lang"><button data-l="en">EN</button> <button data-l="es">ES</button></div></div>
+
+  <h1><span class="en">Thank you! <i>Download and activate.</i></span><span class="es">¡Gracias! <i>Descarga y activa.</i></span></h1>
+  <p class="lead"><span class="en">Install it on your device, then activate it with your purchase email and your purchase code. Each purchase works on 2 devices.</span><span class="es">Instálala en tu equipo y actívala con el correo de tu compra y el código de compra. Cada compra sirve en 2 equipos.</span></p>
+  <p id="txwrap" hidden><span class="en">Your purchase code:</span><span class="es">Tu código de compra:</span> <span class="code" id="tx"></span></p>
+
+  <div class="grid">
+    <div class="card"><h2>Windows 10 / 11</h2>
+      <p><span class="en">Installer for your PC. If Windows shows “Windows protected your PC”, click More info → Run anyway.</span><span class="es">Instalador para tu PC. Si Windows muestra «Windows protegió su PC», pulsa Más información → Ejecutar de todas formas.</span></p>
+      <a class="btn" href="https://github.com/alexdavidsilvaocampo2-code/atlasarmonico/releases/latest/download/Atlas-Armonico-Windows-Setup.exe"><span class="en">Download for Windows</span><span class="es">Descargar para Windows</span></a>
+      <a class="btn alt" href="https://github.com/alexdavidsilvaocampo2-code/atlasarmonico/releases/latest/download/Atlas-Armonico-Windows-Portable.exe"><span class="en">Portable (no install)</span><span class="es">Portable (sin instalar)</span></a></div>
+    <div class="card"><h2>Mac</h2>
+      <p><span class="en">macOS 12 or later. The first time, right-click the app → Open. On macOS 15: System Settings → Privacy &amp; Security → Open Anyway.</span><span class="es">macOS 12 o superior. La primera vez, clic derecho en la app → Abrir. En macOS 15: Ajustes del Sistema → Privacidad y seguridad → Abrir igualmente.</span></p>
+      <a class="btn" href="https://github.com/alexdavidsilvaocampo2-code/atlasarmonico/releases/latest/download/Atlas-Armonico-Mac.dmg"><span class="en">Download for Mac</span><span class="es">Descargar para Mac</span></a></div>
+    <div class="card"><h2><span class="en">Web · iPad · phone</span><span class="es">Web · iPad · celular</span></h2>
+      <p><span class="en">Works in Chrome, Safari or Edge. Use “Install” or “Add to Home Screen” to keep it as an app; it works offline.</span><span class="es">Funciona en Chrome, Safari o Edge. Usa «Instalar» o «Agregar a pantalla de inicio» para tenerla como app; funciona sin internet.</span></p>
+      <a class="btn" href="app/"><span class="en">Open the web app</span><span class="es">Abrir la app web</span></a></div>
+  </div>
+
+  <div class="box"><h2><span class="en">Activate (once per device)</span><span class="es">Activa (una vez por equipo)</span></h2>
+    <ol>
+      <li><span class="en">Open the app and click <b>Activate</b> (top right).</span><span class="es">Abre la app y pulsa <b>Activar</b> (arriba a la derecha).</span></li>
+      <li><span class="en">Enter the <b>email you bought with</b> and your <b>purchase code</b> (starts with HP). It is in the Hotmart email and at consumer.hotmart.com → My purchases.</span><span class="es">Escribe el <b>correo con el que compraste</b> y tu <b>código de compra</b> (empieza por HP). Está en el correo de Hotmart y en consumer.hotmart.com → Mis compras.</span></li>
+      <li><span class="en">Done: you will see “Licensed”. Changing computers? Click “Licensed” → Release this device.</span><span class="es">Listo: verás «Licencia activa». ¿Cambias de computador? Pulsa «Licencia activa» → Liberar este equipo.</span></li>
+    </ol>
+    <p class="note"><span class="en">If you just paid, wait a minute before activating. Your PDF bonuses are in your Hotmart purchase (consumer.hotmart.com).</span><span class="es">Si acabas de pagar, espera un minuto antes de activar. Tus bonos en PDF están en tu compra de Hotmart (consumer.hotmart.com).</span></p>
+  </div>
+  <p class="note" style="margin-top:20px"><span class="en">Questions:</span><span class="es">¿Dudas?</span> <a href="mailto:atlasarmonico.app@gmail.com">atlasarmonico.app@gmail.com</a></p>
+</div>
+<script>
+(function(){
+  var root=document.documentElement,l='en';
+  try{var p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');if(p.lang==='es'||p.lang==='en')l=p.lang}catch(e){}
+  function set(x){root.dataset.lang=x;root.lang=x;document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===x)})}
+  document.querySelectorAll('.lang button').forEach(function(b){b.onclick=function(){set(b.dataset.l)}});
+  set(l);
+  var q=new URLSearchParams(location.search),tx=q.get('transaction')||q.get('transaction_id')||q.get('hottok_transaction')||'';
+  if(/^HP[0-9A-Z]{6,30}$/i.test(tx)){document.getElementById('tx').textContent=tx.toUpperCase();document.getElementById('txwrap').hidden=false}
+})();
+</script>
+</body>
+</html>
