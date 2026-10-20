@@ -397,7 +397,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid #3a353c;border-bot
 <script>
 window.__errs=[];addEventListener('error',e=>window.__errs.push(String(e.message)));addEventListener('unhandledrejection',e=>window.__errs.push(String(e.reason)));
 /* Edición: 'full' (versión de pago), 'trial' (prueba completa con usos limitados) o 'demo'. scripts/build.py cambia este valor. */
-const APP={edition:'trial',buyUrl:'https://pay.hotmart.com/H108088291R',support:'atlasarmonico.app@gmail.com',price:'US$4.99',trialUses:5,freeChordCats:[0,2],freeScaleCats:[0,4],licenseApi:'https://atlas-armonico-license.atlasarmonico-app.workers.dev',licensePub:'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEbRNlihhYk19H-f4fPGMSdiIjOidOW9ovSYTZZaqHEjhHABhSZ3Y7Q9lfpPB0Oe8wVUIbXFi-N09Jm-pTr_CECQ'};
+const APP={edition:'trial',buyUrl:'https://pay.hotmart.com/H108088291R',support:'atlasarmonico.app@gmail.com',price:'US$4.99',trialUses:10,trialHours:2,freeChordCats:[0,2],freeScaleCats:[0,4],licenseApi:'https://atlas-armonico-license.atlasarmonico-app.workers.dev',licensePub:'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEbRNlihhYk19H-f4fPGMSdiIjOidOW9ovSYTZZaqHEjhHABhSZ3Y7Q9lfpPB0Oe8wVUIbXFi-N09Jm-pTr_CECQ'};
 /* ================= Teoría ================= */
 const LET=['C','D','E','F','G','A','B'], SOL=['Do','Re','Mi','Fa','Sol','La','Si'], LPC=[0,2,4,5,7,9,11];
 const ACC={'-2':'𝄫','-1':'♭','0':'','1':'♯','2':'𝄪'};
@@ -482,9 +482,9 @@ const STR={
   trNotationHtml:'Mayor <code>C</code> · menor <code>Cm</code> o <code>C-</code> · séptima <code>C7</code> · séptima mayor <code>Cmaj7</code>, <code>CM7</code> o <code>CΔ7</code> · menor séptima <code>Cm7</code> · disminuido <code>C°</code> o <code>Cdim</code> · semidisminuido <code>Cm7b5</code> o <code>Cø</code> · suspendido <code>Csus4</code> · <code>Cadd9</code> · <code>C6/9</code> · con bajo <code>C/E</code>. También en Do Re Mi: <code>Do</code> <code>Rem</code> <code>Sol7</code> <code>Fa#m</code> <code>Sib</code>.',
   tr12:'La canción en los 12 tonos', trSide:'Toca una fila para pasar la canción a ese tono.',
   trCount:n=>`${n} ${n===1?'acorde':'acordes'}`, trBadCount:n=>`${n} sin reconocer`,
-  trialLeft:n=>n===1?'Prueba: último uso':`Prueba: quedan ${n} usos`, buyFor:p=>`Comprar · ${p}`,
+  trialLeft:n=>n===1?'Prueba: última consulta':`Prueba: quedan ${n} consultas`, buyFor:p=>`Comprar · ${p}`,
   pwTitle:'Tu prueba gratuita terminó',
-  pwText:n=>`Usaste Atlas Armónico ${n} veces. Desbloquéalo para siempre con un solo pago: los 96 acordes, las 71 escalas, la digitación de ambas manos, en 2 equipos (Windows, Mac, iPad o celular).`,
+  pwText:n=>`Terminaste tu prueba gratuita (${n} consultas o ${APP.trialHours} horas). Desbloquéalo para siempre con un solo pago: los 96 acordes, las 71 escalas, la digitación de ambas manos, en 2 equipos (Windows, Mac, iPad o celular).`,
   pwBuy:'Comprar ahora, pago único', pwOwned:'¿Dudas? Escríbenos a ',
   actOpen:'Activar', actHead:'Activa Atlas Armónico', actIntro:'Escribe el correo con el que compraste y el código de la compra. La activación necesita internet una sola vez; después funciona sin conexión.',
   actTitle:'¿Ya la compraste? Activa este equipo', actEmail:'Correo de la compra', actCode:'Código de la compra (empieza por HP)', actGo:'Activar este equipo', actBusy:'Activando…',
@@ -562,9 +562,9 @@ const STR={
   trNotationHtml:'Major <code>C</code> · minor <code>Cm</code> or <code>C-</code> · seventh <code>C7</code> · major seventh <code>Cmaj7</code>, <code>CM7</code> or <code>CΔ7</code> · minor seventh <code>Cm7</code> · diminished <code>C°</code> or <code>Cdim</code> · half-diminished <code>Cm7b5</code> or <code>Cø</code> · suspended <code>Csus4</code> · <code>Cadd9</code> · <code>C6/9</code> · slash bass <code>C/E</code>. Solfège works too: <code>Do</code> <code>Rem</code> <code>Sol7</code> <code>Fa#m</code> <code>Sib</code>.',
   tr12:'The song in all 12 keys', trSide:'Tap a row to move the song to that key.',
   trCount:n=>`${n} ${n===1?'chord':'chords'}`, trBadCount:n=>`${n} not recognised`,
-  trialLeft:n=>n===1?'Trial: last use':`Trial: ${n} uses left`, buyFor:p=>`Buy · ${p}`,
+  trialLeft:n=>n===1?'Trial: last query':`Trial: ${n} queries left`, buyFor:p=>`Buy · ${p}`,
   pwTitle:'Your free trial has ended',
-  pwText:n=>`You have used Atlas Armónico ${n} times. Unlock it forever with a single payment: all 96 chords, 71 scales, fingering for both hands, on 2 devices (Windows, Mac, iPad or phone).`,
+  pwText:n=>`Your free trial is over (${n} queries or ${APP.trialHours} hours). Unlock it forever with a single payment: all 96 chords, 71 scales, fingering for both hands, on 2 devices (Windows, Mac, iPad or phone).`,
   pwBuy:'Buy now, one-time payment', pwOwned:'Questions? Email ',
   actOpen:'Activate', actHead:'Activate Atlas Armónico', actIntro:'Enter the email you bought with and your purchase code. Activation needs the internet once; after that it works offline.',
   actTitle:'Already bought it? Activate this device', actEmail:'Purchase email', actCode:'Purchase code (starts with HP)', actGo:'Activate this device', actBusy:'Activating…',
@@ -822,17 +822,18 @@ SCALE_DATA.forEach(([cat,desc,list],ci)=>{
 const isDemo=APP.edition==='demo', isTrial=APP.edition==='trial', storeReady=/^https:\/\//.test(APP.buyUrl);
 /* Activación: solo se bloquea la prueba si existe a la vez la tienda y el servidor que entrega las licencias. */
 const licReady=/^https?:\/\/[^/]+/.test(APP.licenseApi)&&APP.licensePub.length>80, sellReady=storeReady&&licReady;
-/* Prueba: cada apertura separada por más de 30 minutos cuenta como un uso. */
+/* Prueba: APP.trialUses consultas (elegir acorde, escala, tónica, modo o transportar) o APP.trialHours horas
+   desde el primer uso, lo que ocurra primero, y una sola vez por equipo/navegador. */
 const TRIAL=(()=>{
   if(!isTrial)return null;
-  let t={count:0,last:0};
+  let t={count:0,first:0};
   try{t=Object.assign(t,JSON.parse(localStorage.getItem('atlas-trial')||'{}'))}catch(e){}
-  const now=Date.now();
-  if(now-t.last>30*60*1000)t.count++;
-  t.last=now;
-  try{localStorage.setItem('atlas-trial',JSON.stringify(t))}catch(e){}
+  const save=()=>{try{localStorage.setItem('atlas-trial',JSON.stringify(t))}catch(e){}};
+  if(!t.first){t.first=Date.now();save()}
   /* Sin tienda configurada nunca se bloquea: no se puede pedir una compra que aún no es posible. */
-  return {used:t.count,left:Math.max(0,APP.trialUses-t.count+1),over:sellReady&&t.count>APP.trialUses};
+  return {get used(){return t.count},get left(){return Math.max(0,APP.trialUses-t.count)},
+    get over(){return sellReady&&(t.count>APP.trialUses||Date.now()-t.first>APP.trialHours*36e5)},
+    tick(){if(window.__selftesting||(typeof LIC!=='undefined'&&LIC.ok))return;t.count++;save()}};
 })();
 /* ================= Licencia =================
    La licencia es una firma ECDSA del servidor sobre {compra, equipo}. Se comprueba aquí sin internet con la
@@ -1725,6 +1726,7 @@ function renderPaywall(){
 }
 function closePaywall(){if(trialLocked())return;S.pw=null;S.pwMsg='';delete $('#deact').dataset.armed;renderPaywall()}
 function renderAll(scroll){
+  if(scroll&&TRIAL)TRIAL.tick();   // cada consulta del usuario cuenta para la prueba
   renderStatic();renderRoots();renderReadout();renderControls();renderLibrary();renderSide();renderMeta();renderTp();paint();
   if(scroll)scrollToActive();
 }
@@ -1821,6 +1823,7 @@ $('#readout').addEventListener('click',e=>{
 
 /* ================= Autoprueba (la usan los scripts de verificación) ================= */
 window.__atlasSelfTest=function(){
+  window.__selftesting=true;
   const out={edition:APP.edition,errors:(window.__errs||[]).slice(),fails:[],warns:[]};
   const fail=m=>{if(out.fails.length<60)out.fails.push(m)};
   const vis=id=>{const e=document.getElementById(id);return !!e&&getComputedStyle(e).display!=='none'&&!e.closest('[hidden]')};
@@ -1975,6 +1978,7 @@ window.__atlasSelfTest=function(){
   }catch(e){fail('excepción: '+(e&&e.stack||e))}
   Object.assign(S,keep);setKW(keep.kw);savePrefs();renderAll(false);
   out.voicings=nV;out.scaleLayouts=nS;out.thumbOnBlack=thumbBlack;out.errors=(window.__errs||[]).slice();
+  window.__selftesting=false;
   return JSON.stringify(out);
 };
 
@@ -1982,6 +1986,7 @@ window.__atlasSelfTest=function(){
 setKW(fitKW());
 renderAll(false);
 licBoot();
+if(TRIAL)setInterval(()=>{if(trialLocked()&&$('#paywall').hidden)renderAll(false)},60000);
 requestAnimationFrame(()=>scrollToActive());
 
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
