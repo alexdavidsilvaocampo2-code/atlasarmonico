@@ -15,17 +15,17 @@
 <style>
 /* Layout: página de venta de una sola columna; la demo real del piano es el centro de la página */
 :root{
-  --bg:#0e0d0f; --panel:#18161a; --panel-2:#221f24; --line:#322d33;
-  --fg:#efe8db; --muted:#a59c8f; --dim:#6f675e;
-  --brass:#d6ae60; --on-brass:#1d160a; --felt:#8e232b;
-  --f-display:'Cormorant Garamond','Noto Music',Georgia,serif;
-  --f-body:'Manrope','Noto Music',system-ui,sans-serif;
-  --f-mono:'JetBrains Mono',ui-monospace,monospace;
-  color-scheme:dark;
+--bg:#0e0d0f; --panel:#18161a; --panel-2:#221f24; --line:#322d33;
+--fg:#efe8db; --muted:#a59c8f; --dim:#6f675e;
+--brass:#d6ae60; --on-brass:#1d160a; --felt:#8e232b;
+--f-display:'Cormorant Garamond','Noto Music',Georgia,serif;
+--f-body:'Manrope','Noto Music',system-ui,sans-serif;
+--f-mono:'JetBrains Mono',ui-monospace,monospace;
+color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--fg)}
-body{font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body{font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;padding-bottom:76px}
 [data-lang="es"] .en,[data-lang="en"] .es{display:none!important}
 a{color:inherit}
 .wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
@@ -67,6 +67,13 @@ h1 em{color:var(--brass);font-weight:500}
 .gallery figcaption{padding:14px 18px;color:var(--muted);font-size:15px}
 .gallery figcaption b{color:var(--fg)}
 .cta2{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px}
+.vcard{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.vcard video{display:block;width:100%;aspect-ratio:16/9;background:#000}
+.vcard figcaption{padding:14px 16px;color:var(--muted);font-size:14.5px;display:grid;gap:4px}
+.vcard figcaption b{color:var(--fg);font-size:16px}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:6;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+.sticky .t{font-weight:700;font-size:14px}
 
 section h2{font-family:var(--f-display);font-weight:600;font-size:clamp(34px,4.5vw,52px);line-height:1.05;margin:0 0 10px;text-wrap:balance}
 section .sub{color:var(--muted);margin:0 0 28px;max-width:62ch}
@@ -107,141 +114,156 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </head>
 <body>
 <nav>
-  <div class="wrap">
-    <a class="logo" href="#">Atlas <em>Armónico</em></a>
-    <div class="navr">
-      <div class="seg" id="lang"><button data-l="es" aria-pressed="true">ES</button><button data-l="en" aria-pressed="false">EN</button></div>
-      <a class="btn sm" href="app/index.html"><span class="es">Probar gratis</span><span class="en">Try it free</span></a>
-      <a class="btn sm primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar</span><span class="en">Buy</span></a>
-    </div>
-  </div>
+<div class="wrap">
+<a class="logo" href="#">Atlas <em>Armónico</em></a>
+<div class="navr">
+<div class="seg" id="lang"><button data-l="es" aria-pressed="true">ES</button><button data-l="en" aria-pressed="false">EN</button></div>
+<a class="btn sm" href="app/index.html"><span class="es">Probar gratis</span><span class="en">Try it free</span></a>
+<a class="btn sm primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar</span><span class="en">Buy</span></a>
+</div>
+</div>
 </nav>
 
 <header class="wrap hero">
-  <span class="eyebrow"><span class="es">Piano de 7 octavas · Windows, Mac, iPad y celular</span><span class="en">7-octave piano · Windows, Mac, iPad and phone</span></span>
-  <h1><span class="es">Cada acorde, cada escala <em>y cada dedo.</em></span><span class="en">Every chord, every scale, <em>every finger.</em></span></h1>
-  <p class="lede"><span class="es">Ves una canción en internet y no sabes en qué tono está. Quieres armonizar una escala y no recuerdas qué acordes le tocan. Y cuando por fin encuentras las notas, dudas con qué dedo tocarlas. Atlas Armónico te lo muestra en un piano de 7 octavas: cualquier acorde o escala en los 21 tonos, los acordes que van con cada escala, el dedo de cada tecla en las dos manos, y un transportador que pasa cualquier canción a otro tono.</span><span class="en">You find a song online and can't tell what key it's in. You want to harmonize a scale and can't remember which chords belong to it. And when you finally have the notes, you're not sure which finger goes where. Atlas Armónico shows you on a 7-octave piano: any chord or scale in all 21 keys, the chords that fit each scale, the finger for every key with both hands, and a transposer that moves any song to another key.</span></p>
-  <div class="ctas">
-    <a class="btn primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar por US$4.99</span><span class="en">Buy for US$4.99</span></a>
-    <a class="btn" href="#demo"><span class="es">Probar gratis</span><span class="en">Try it free</span></a>
-  </div>
-  <span class="fine"><span class="es">Pago único, sin suscripción. Pruébala completa gratis: 10 consultas o 2 horas.</span><span class="en">One-time payment, no subscription. Try the full app free: 10 queries or 2 hours.</span></span>
+<span class="eyebrow"><span class="es">Piano de 7 octavas · Windows, Mac, iPad y celular</span><span class="en">7-octave piano · Windows, Mac, iPad and phone</span></span>
+<h1><span class="es">Cada acorde, cada escala <em>y cada dedo.</em></span><span class="en">Every chord, every scale, <em>every finger.</em></span></h1>
+<p class="lede"><span class="es">Ves una canción en internet y no sabes en qué tono está. Quieres armonizar una escala y no recuerdas qué acordes le tocan. Y cuando por fin encuentras las notas, dudas con qué dedo tocarlas. Atlas Armónico te lo muestra en un piano de 7 octavas: cualquier acorde o escala en los 21 tonos, los acordes que van con cada escala, el dedo de cada tecla en las dos manos, y un transportador que pasa cualquier canción a otro tono.</span><span class="en">You find a song online and can't tell what key it's in. You want to harmonize a scale and can't remember which chords belong to it. And when you finally have the notes, you're not sure which finger goes where. Atlas Armónico shows you on a 7-octave piano: any chord or scale in all 21 keys, the chords that fit each scale, the finger for every key with both hands, and a transposer that moves any song to another key.</span></p>
+<div class="ctas">
+<a class="btn primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar por US$4.99</span><span class="en">Buy for US$4.99</span></a>
+<a class="btn" href="#demo"><span class="es">Probar gratis</span><span class="en">Try it free</span></a>
+<a class="btn" href="#videos"><span class="es">Ver videos con sonido</span><span class="en">Watch videos with sound</span></a>
+</div>
+<span class="fine"><span class="es">Pago único, sin suscripción. Pruébala completa gratis: 10 consultas o 2 horas.</span><span class="en">One-time payment, no subscription. Try the full app free: 10 queries or 2 hours.</span></span>
 </header>
 
 <section class="wrap stage" id="demo">
-  <div class="frame">
-    <div class="bar"><i></i><i></i><i></i><span class="es">Prueba gratuita · tócala con el ratón o el teclado</span><span class="en">Free trial · play it with your mouse or keyboard</span></div>
-    <div class="felt"></div>
-    <iframe src="app/index.html" title="Atlas Armónico demo" loading="lazy" allow="autoplay"></iframe>
-  </div>
-  <p class="caption"><span class="es">Es la app completa. Tienes 10 consultas gratis (o 2 horas); después, un solo pago la desbloquea para siempre.</span><span class="en">This is the full app. You get 10 free queries (or 2 hours); after that, one payment unlocks it forever.</span></p>
+<div class="frame">
+<div class="bar"><i></i><i></i><i></i><span class="es">Prueba gratuita · tócala con el ratón o el teclado</span><span class="en">Free trial · play it with your mouse or keyboard</span></div>
+<div class="felt"></div>
+<iframe src="app/index.html" title="Atlas Armónico demo" loading="lazy" allow="autoplay"></iframe>
+</div>
+<p class="caption"><span class="es">Es la app completa. Tienes 10 consultas gratis (o 2 horas); después, un solo pago la desbloquea para siempre.</span><span class="en">This is the full app. You get 10 free queries (or 2 hours); after that, one payment unlocks it forever.</span></p>
+</section>
+
+<section class="wrap block" id="videos">
+<h2><span class="es">Míralo y escúchalo</span><span class="en">See it and hear it</span></h2>
+<p class="sub"><span class="es">Cuatro clips cortos con la app real y su sonido: escalas con digitación, los tonos más raros, acordes hasta la 13ª y el transportador de canciones.</span><span class="en">Four short clips of the real app, with sound: scales with fingering, the strangest keys, chords up to 13ths and the song transposer.</span></p>
+<div class="vgrid">
+<figure class="vcard"><video controls preload="none" playsinline poster="vid-1-escalas.jpg"><source src="vid-1-escalas.mp4" type="video/mp4"></video><figcaption><b><span class="es">Cada escala, cada dedo</span><span class="en">Every scale, every finger</span></b><span class="es">Fa♯ mayor con la digitación de ambas manos y 71 escalas y modos.</span><span class="en">F♯ major with fingering for both hands, plus 71 scales and modes.</span></figcaption></figure>
+<figure class="vcard"><video controls preload="none" playsinline poster="vid-2-tonos-raros.jpg"><source src="vid-2-tonos-raros.mp4" type="video/mp4"></video><figcaption><b><span class="es">Los tonos más raros</span><span class="en">The strangest keys</span></b><span class="es">Sol♯ mayor con Fa doble sostenido, Do♭ y Si♯ con 12 sostenidos.</span><span class="en">G♯ major with F double sharp, C♭ and B♯ with 12 sharps.</span></figcaption></figure>
+<figure class="vcard"><video controls preload="none" playsinline poster="vid-3-acordes.jpg"><source src="vid-3-acordes.mp4" type="video/mp4"></video><figcaption><b><span class="es">96 acordes hasta la 13ª</span><span class="en">96 chords up to 13ths</span></b><span class="es">Séptimas, novenas, dominantes alterados y 13ª, en bloque o arpegio.</span><span class="en">Sevenths, ninths, altered dominants and 13ths, as block or arpeggio.</span></figcaption></figure>
+<figure class="vcard"><video controls preload="none" playsinline poster="vid-4-transportador.jpg"><source src="vid-4-transportador.mp4" type="video/mp4"></video><figcaption><b><span class="es">Cambia de tono cualquier canción</span><span class="en">Move any song to another key</span></b><span class="es">Pegas los acordes, detecta el tono y los ves en el teclado.</span><span class="en">Paste the chords, it detects the key and shows them on the keyboard.</span></figcaption></figure>
+</div>
+<div class="cta2"><a class="btn primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar · US$4.99</span><span class="en">Buy · US$4.99</span></a><a class="btn" href="#demo"><span class="es">Probar gratis</span><span class="en">Try it free</span></a></div>
 </section>
 
 <section class="wrap block" id="screens">
-  <h2><span class="es">Míralo en acción</span><span class="en">See it in action</span></h2>
-  <p class="sub"><span class="es">Capturas reales de la app, sin retoques.</span><span class="en">Real screenshots of the app, untouched.</span></p>
-  <div class="gallery">
-    <figure><img src="img/chord.jpg" width="2000" height="1722" loading="lazy" alt="Cmaj7 on the 7-octave keyboard with fingers 1-2-3-5"><figcaption><b><span class="es">Acordes</span><span class="en">Chords</span></b> · <span class="es">Cmaj7 en el teclado con el dedo de cada tecla, notas, fórmula e intervalos.</span><span class="en">Cmaj7 on the keyboard with the finger for every key, notes, formula and intervals.</span></figcaption></figure>
-    <figure><img src="img/scale.jpg" width="2000" height="1722" loading="lazy" alt="E major scale with fingering for both hands"><figcaption><b><span class="es">Escalas</span><span class="en">Scales</span></b> · <span class="es">Digitación de ambas manos y los acordes que se forman con cada escala.</span><span class="en">Fingering for both hands and the chords built from each scale.</span></figcaption></figure>
-    <figure><img src="img/transpose.jpg" width="2000" height="1722" loading="lazy" alt="Song transposer moving G D Em C to C major"><figcaption><b><span class="es">Transportador</span><span class="en">Transposer</span></b> · <span class="es">G D Em C pasado a C mayor en un clic, con grados y digitación.</span><span class="en">G D Em C moved to C major in one click, with Roman numerals and fingering.</span></figcaption></figure>
-  </div>
-  <div class="cta2"><a class="btn primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar · US$4.99</span><span class="en">Buy · US$4.99</span></a><a class="btn" href="#demo"><span class="es">Probar gratis</span><span class="en">Try it free</span></a></div>
+<h2><span class="es">Capturas de pantalla</span><span class="en">Screenshots</span></h2>
+<p class="sub"><span class="es">Capturas reales de la app, sin retoques.</span><span class="en">Real screenshots of the app, untouched.</span></p>
+<div class="gallery">
+<figure><img src="img/chord.jpg" width="2000" height="1722" loading="lazy" alt="Cmaj7 on the 7-octave keyboard with fingers 1-2-3-5"><figcaption><b><span class="es">Acordes</span><span class="en">Chords</span></b> · <span class="es">Cmaj7 en el teclado con el dedo de cada tecla, notas, fórmula e intervalos.</span><span class="en">Cmaj7 on the keyboard with the finger for every key, notes, formula and intervals.</span></figcaption></figure>
+<figure><img src="img/scale.jpg" width="2000" height="1722" loading="lazy" alt="E major scale with fingering for both hands"><figcaption><b><span class="es">Escalas</span><span class="en">Scales</span></b> · <span class="es">Digitación de ambas manos y los acordes que se forman con cada escala.</span><span class="en">Fingering for both hands and the chords built from each scale.</span></figcaption></figure>
+<figure><img src="img/transpose.jpg" width="2000" height="1722" loading="lazy" alt="Song transposer moving G D Em C to C major"><figcaption><b><span class="es">Transportador</span><span class="en">Transposer</span></b> · <span class="es">G D Em C pasado a C mayor en un clic, con grados y digitación.</span><span class="en">G D Em C moved to C major in one click, with Roman numerals and fingering.</span></figcaption></figure>
+</div>
+<div class="cta2"><a class="btn primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar · US$4.99</span><span class="en">Buy · US$4.99</span></a><a class="btn" href="#demo"><span class="es">Probar gratis</span><span class="en">Try it free</span></a></div>
 </section>
 
 <section class="wrap block">
-  <h2><span class="es">Lo que hace</span><span class="en">What it does</span></h2>
-  <p class="sub"><span class="es">Pensado para estudiar: todo lo que ves en pantalla tiene nombre, fórmula y digitación.</span><span class="en">Built for practice: everything on screen has a name, a formula and a fingering.</span></p>
-  <div class="grid">
-    <div class="card"><div class="num">♯↔♭</div><h3><span class="es">Transportador de canciones</span><span class="en">Song transposer</span></h3><p><span class="es">Pega los acordes que viste en internet (G D Em C, Dm7 G7 Cmaj7, D/F♯ o en Do Re Mi), elige el nuevo tono y míralos en el teclado con su digitación. Detecta el tono original solo.</span><span class="en">Paste the chords you found online (G D Em C, Dm7 G7 Cmaj7, D/F♯ or in solfège), pick the new key and see them on the keyboard with fingering. It detects the original key for you.</span></p></div>
-    <div class="card"><div class="num">96</div><h3><span class="es">Acordes, de la tríada a la 13ª</span><span class="en">Chords, from triads to 13ths</span></h3><p><span class="es">Sextas, séptimas, novenas, oncenas, trecenas, dominantes alterados, sextas aumentadas, Tristán, Scriabin y voicings cuartales.</span><span class="en">Sixths, sevenths, ninths, elevenths, thirteenths, altered dominants, augmented sixths, Tristan, Scriabin and quartal voicings.</span></p></div>
-    <div class="card"><div class="num">71</div><h3><span class="es">Escalas y modos</span><span class="en">Scales and modes</span></h3><p><span class="es">Modos griegos, menor armónica y melódica con sus modos, mayor armónica, pentatónicas, blues, bebop, simétricas, ragas y modos de Messiaen.</span><span class="en">Church modes, harmonic and melodic minor with their modes, harmonic major, pentatonics, blues, bebop, symmetrical scales, ragas and Messiaen modes.</span></p></div>
-    <div class="card"><div class="num">1–5</div><h3><span class="es">Digitación de ambas manos</span><span class="en">Fingering for both hands</span></h3><p><span class="es">Digitación estándar de los métodos de técnica en escalas mayores y menores, con un diagrama de manos que marca qué dedo toca cada tecla.</span><span class="en">Standard method fingerings for major and minor scales, with a hand diagram that shows which finger plays each key.</span></p></div>
-    <div class="card"><div class="num">21</div><h3><span class="es">Tónicas, bien escritas</span><span class="en">Roots, spelled right</span></h3><p><span class="es">De C a C♭ y B♯: cada nota con su letra correcta, dobles alteraciones incluidas, y la lista del acorde en todas las tónicas.</span><span class="en">From C to C♭ and B♯: every note with its correct letter, double accidentals included, plus the chord listed in every key.</span></p></div>
-    <div class="card"><div class="num">85</div><h3><span class="es">Teclas reales</span><span class="en">Real keys</span></h3><p><span class="es">Siete octavas con las teclas negras colocadas como en un piano real, sonido de piano y teclado del ordenador para tocar.</span><span class="en">Seven octaves with black keys placed as on a real piano, piano sound, and computer-keyboard playing.</span></p></div>
-    <div class="card"><div class="num">?</div><h3><span class="es">Identificador de acordes</span><span class="en">Chord identifier</span></h3><p><span class="es">Toca unas teclas y te dice qué acorde es, con su inversión y todas sus lecturas posibles.</span><span class="en">Press some keys and it names the chord, with its inversion and every possible reading.</span></p></div>
-  </div>
+<h2><span class="es">Lo que hace</span><span class="en">What it does</span></h2>
+<p class="sub"><span class="es">Pensado para estudiar: todo lo que ves en pantalla tiene nombre, fórmula y digitación.</span><span class="en">Built for practice: everything on screen has a name, a formula and a fingering.</span></p>
+<div class="grid">
+<div class="card"><div class="num">♯↔♭</div><h3><span class="es">Transportador de canciones</span><span class="en">Song transposer</span></h3><p><span class="es">Pega los acordes que viste en internet (G D Em C, Dm7 G7 Cmaj7, D/F♯ o en Do Re Mi), elige el nuevo tono y míralos en el teclado con su digitación. Detecta el tono original solo.</span><span class="en">Paste the chords you found online (G D Em C, Dm7 G7 Cmaj7, D/F♯ or in solfège), pick the new key and see them on the keyboard with fingering. It detects the original key for you.</span></p></div>
+<div class="card"><div class="num">96</div><h3><span class="es">Acordes, de la tríada a la 13ª</span><span class="en">Chords, from triads to 13ths</span></h3><p><span class="es">Sextas, séptimas, novenas, oncenas, trecenas, dominantes alterados, sextas aumentadas, Tristán, Scriabin y voicings cuartales.</span><span class="en">Sixths, sevenths, ninths, elevenths, thirteenths, altered dominants, augmented sixths, Tristan, Scriabin and quartal voicings.</span></p></div>
+<div class="card"><div class="num">71</div><h3><span class="es">Escalas y modos</span><span class="en">Scales and modes</span></h3><p><span class="es">Modos griegos, menor armónica y melódica con sus modos, mayor armónica, pentatónicas, blues, bebop, simétricas, ragas y modos de Messiaen.</span><span class="en">Church modes, harmonic and melodic minor with their modes, harmonic major, pentatonics, blues, bebop, symmetrical scales, ragas and Messiaen modes.</span></p></div>
+<div class="card"><div class="num">1–5</div><h3><span class="es">Digitación de ambas manos</span><span class="en">Fingering for both hands</span></h3><p><span class="es">Digitación estándar de los métodos de técnica en escalas mayores y menores, con un diagrama de manos que marca qué dedo toca cada tecla.</span><span class="en">Standard method fingerings for major and minor scales, with a hand diagram that shows which finger plays each key.</span></p></div>
+<div class="card"><div class="num">21</div><h3><span class="es">Tónicas, bien escritas</span><span class="en">Roots, spelled right</span></h3><p><span class="es">De C a C♭ y B♯: cada nota con su letra correcta, dobles alteraciones incluidas, y la lista del acorde en todas las tónicas.</span><span class="en">From C to C♭ and B♯: every note with its correct letter, double accidentals included, plus the chord listed in every key.</span></p></div>
+<div class="card"><div class="num">85</div><h3><span class="es">Teclas reales</span><span class="en">Real keys</span></h3><p><span class="es">Siete octavas con las teclas negras colocadas como en un piano real, sonido de piano y teclado del ordenador para tocar.</span><span class="en">Seven octaves with black keys placed as on a real piano, piano sound, and computer-keyboard playing.</span></p></div>
+<div class="card"><div class="num">?</div><h3><span class="es">Identificador de acordes</span><span class="en">Chord identifier</span></h3><p><span class="es">Toca unas teclas y te dice qué acorde es, con su inversión y todas sus lecturas posibles.</span><span class="en">Press some keys and it names the chord, with its inversion and every possible reading.</span></p></div>
+</div>
 </section>
 
 <section class="wrap block">
-  <h2><span class="es">Para quién es</span><span class="en">Who it is for</span></h2>
-  <p class="sub"><span class="es">Para quien quiere entender lo que toca, no solo memorizarlo.</span><span class="en">For anyone who wants to understand what they play, not just memorise it.</span></p>
-  <div class="who">
-    <span class="es">Estudiantes de piano</span><span class="en">Piano students</span>
-    <span class="es">Profesores y academias</span><span class="en">Teachers and schools</span>
-    <span class="es">Músicos de iglesia</span><span class="en">Church musicians</span>
-    <span class="es">Pianistas de jazz</span><span class="en">Jazz pianists</span>
-    <span class="es">Compositores y productores</span><span class="en">Composers and producers</span>
-    <span class="es">Guitarristas que aprenden teclado</span><span class="en">Guitarists learning keys</span>
-  </div>
+<h2><span class="es">Para quién es</span><span class="en">Who it is for</span></h2>
+<p class="sub"><span class="es">Para quien quiere entender lo que toca, no solo memorizarlo.</span><span class="en">For anyone who wants to understand what they play, not just memorise it.</span></p>
+<div class="who">
+<span class="es">Estudiantes de piano</span><span class="en">Piano students</span>
+<span class="es">Profesores y academias</span><span class="en">Teachers and schools</span>
+<span class="es">Músicos de iglesia</span><span class="en">Church musicians</span>
+<span class="es">Pianistas de jazz</span><span class="en">Jazz pianists</span>
+<span class="es">Compositores y productores</span><span class="en">Composers and producers</span>
+<span class="es">Guitarristas que aprenden teclado</span><span class="en">Guitarists learning keys</span>
+</div>
 </section>
 
 <section class="wrap block">
-  <h2><span class="es">Prueba gratis y versión completa</span><span class="en">Free trial vs full version</span></h2>
-  <div class="tablewrap"><table>
-    <thead><tr><th></th><th><span class="es">Prueba</span><span class="en">Trial</span></th><th><span class="es">Completa</span><span class="en">Full</span></th></tr></thead>
-    <tbody>
-      <tr><td><span class="es">Los 96 acordes y las 71 escalas</span><span class="en">All 96 chords and 71 scales</span></td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td><span class="es">Digitación de ambas manos y diagrama</span><span class="en">Fingering for both hands and diagram</span></td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td><span class="es">Transportador de canciones</span><span class="en">Song transposer</span></td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td><span class="es">Las 21 tónicas e identificador de acordes</span><span class="en">All 21 roots and chord identifier</span></td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td><span class="es">Uso</span><span class="en">Use</span></td><td><span class="es">10 consultas o 2 h</span><span class="en">10 queries or 2 h</span></td><td class="y"><span class="es">Ilimitados</span><span class="en">Unlimited</span></td></tr>
-      <tr><td><span class="es">3 bonos en PDF para imprimir</span><span class="en">3 printable PDF bonuses</span></td><td class="n">—</td><td class="y">✓</td></tr>
-      <tr><td><span class="es">App de Windows y app web (Mac, iPad, Linux, celular), funciona sin internet</span><span class="en">Windows app and web app (Mac, iPad, Linux, phone), works offline</span></td><td class="y">✓</td><td class="y">✓</td></tr>
-      <tr><td><span class="es">Activación en 2 equipos</span><span class="en">Activation on 2 devices</span></td><td class="n">—</td><td class="y">✓</td></tr>
-    </tbody>
-  </table></div>
+<h2><span class="es">Prueba gratis y versión completa</span><span class="en">Free trial vs full version</span></h2>
+<div class="tablewrap"><table>
+<thead><tr><th></th><th><span class="es">Prueba</span><span class="en">Trial</span></th><th><span class="es">Completa</span><span class="en">Full</span></th></tr></thead>
+<tbody>
+<tr><td><span class="es">Los 96 acordes y las 71 escalas</span><span class="en">All 96 chords and 71 scales</span></td><td class="y">✓</td><td class="y">✓</td></tr>
+<tr><td><span class="es">Digitación de ambas manos y diagrama</span><span class="en">Fingering for both hands and diagram</span></td><td class="y">✓</td><td class="y">✓</td></tr>
+<tr><td><span class="es">Transportador de canciones</span><span class="en">Song transposer</span></td><td class="y">✓</td><td class="y">✓</td></tr>
+<tr><td><span class="es">Las 21 tónicas e identificador de acordes</span><span class="en">All 21 roots and chord identifier</span></td><td class="y">✓</td><td class="y">✓</td></tr>
+<tr><td><span class="es">Uso</span><span class="en">Use</span></td><td><span class="es">10 consultas o 2 h</span><span class="en">10 queries or 2 h</span></td><td class="y"><span class="es">Ilimitados</span><span class="en">Unlimited</span></td></tr>
+<tr><td><span class="es">3 bonos en PDF para imprimir</span><span class="en">3 printable PDF bonuses</span></td><td class="n">—</td><td class="y">✓</td></tr>
+<tr><td><span class="es">App de Windows y app web (Mac, iPad, Linux, celular), funciona sin internet</span><span class="en">Windows app and web app (Mac, iPad, Linux, phone), works offline</span></td><td class="y">✓</td><td class="y">✓</td></tr>
+<tr><td><span class="es">Activación en 2 equipos</span><span class="en">Activation on 2 devices</span></td><td class="n">—</td><td class="y">✓</td></tr>
+</tbody>
+</table></div>
 </section>
 
 <section class="wrap block" id="precio">
-  <h2><span class="es">Precio</span><span class="en">Pricing</span></h2>
-  <p class="sub"><span class="es">Menos que una partitura. Pagas una vez y es tuyo, con las actualizaciones de la versión 1.</span><span class="en">Less than a piece of sheet music. Pay once and it is yours, including every version 1 update.</span></p>
-  <div class="prices">
-    <div class="price main">
-      <h3><span class="es">Licencia de por vida</span><span class="en">Lifetime licence</span></h3>
-      <div class="amount"><small>US$</small>4.99</div>
-      <ul>
-        <li><span class="es">Todos los acordes, escalas y digitaciones</span><span class="en">Every chord, scale and fingering</span></li>
-        <li><span class="es">App de Windows y app web para Mac, iPad, Linux y celular · 2 equipos</span><span class="en">Windows app plus web app for Mac, iPad, Linux and phones · 2 devices</span></li>
-        <li><span class="es">Español e inglés</span><span class="en">Spanish and English</span></li>
-        <li><span class="es">Actualizaciones 1.x incluidas</span><span class="en">1.x updates included</span></li>
-        <li><span class="es">3 bonos en PDF: Mapa de los 24 tonos, Armoniza cualquier escala en 5 minutos y Plan de práctica de 30 días</span><span class="en">3 PDF bonuses: Map of the 24 keys, Harmonize any scale in 5 minutes and a 30-day practice plan</span></li>
-      </ul>
-      <a class="btn primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar</span><span class="en">Buy now</span></a>
-    </div>
-  </div>
+<h2><span class="es">Precio</span><span class="en">Pricing</span></h2>
+<p class="sub"><span class="es">Menos que una partitura. Pagas una vez y es tuyo, con las actualizaciones de la versión 1.</span><span class="en">Less than a piece of sheet music. Pay once and it is yours, including every version 1 update.</span></p>
+<div class="prices">
+<div class="price main">
+<h3><span class="es">Licencia de por vida</span><span class="en">Lifetime licence</span></h3>
+<div class="amount"><small>US$</small>4.99</div>
+<ul>
+<li><span class="es">Todos los acordes, escalas y digitaciones</span><span class="en">Every chord, scale and fingering</span></li>
+<li><span class="es">App de Windows y app web para Mac, iPad, Linux y celular · 2 equipos</span><span class="en">Windows app plus web app for Mac, iPad, Linux and phones · 2 devices</span></li>
+<li><span class="es">Español e inglés</span><span class="en">Spanish and English</span></li>
+<li><span class="es">Actualizaciones 1.x incluidas</span><span class="en">1.x updates included</span></li>
+<li><span class="es">3 bonos en PDF: Mapa de los 24 tonos, Armoniza cualquier escala en 5 minutos y Plan de práctica de 30 días</span><span class="en">3 PDF bonuses: Map of the 24 keys, Harmonize any scale in 5 minutes and a 30-day practice plan</span></li>
+</ul>
+<a class="btn primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar</span><span class="en">Buy now</span></a>
+</div>
+</div>
 </section>
 
 <section class="wrap block">
-  <h2><span class="es">Preguntas frecuentes</span><span class="en">FAQ</span></h2>
-  <details><summary><span class="es">¿En qué equipos funciona?</span><span class="en">What does it run on?</span></summary><p><span class="es">En Windows 10 y 11 con el programa (<a href="https://github.com/alexdavidsilvaocampo2-code/atlasarmonico/releases/latest/download/Atlas-Armonico-Windows-Setup.exe">descargar</a>), y en Mac, iPad, Linux y celulares con la app web en Chrome, Safari, Edge o Firefox, que también se puede instalar como app.</span><span class="en">On Windows 10 and 11 with the desktop app (<a href="https://github.com/alexdavidsilvaocampo2-code/atlasarmonico/releases/latest/download/Atlas-Armonico-Windows-Setup.exe">download</a>), and on Mac, iPad, Linux and phones with the web app in Chrome, Safari, Edge or Firefox, which can also be installed as an app.</span></p></details>
-  <details><summary><span class="es">¿Necesito internet?</span><span class="en">Do I need the internet?</span></summary><p><span class="es">Solo una vez, para activar tu compra. Después funciona sin conexión.</span><span class="en">Only once, to activate your purchase. After that it works offline.</span></p></details>
-  <details><summary><span class="es">¿Cómo funciona la prueba?</span><span class="en">How does the trial work?</span></summary><p><span class="es">Abres la app completa en el navegador o en Windows y haces 10 consultas (elegir un acorde, una escala, una tónica o transportar) durante máximo 2 horas, sin pagar ni registrarte. Después te pide comprarla.</span><span class="en">You open the full app in your browser or on Windows and make 10 queries (pick a chord, a scale, a root or transpose) within 2 hours, with no payment or sign-up. After that it asks you to buy.</span></p></details>
-  <details><summary><span class="es">¿Cómo la desbloqueo después de comprar?</span><span class="en">How do I unlock it after buying?</span></summary><p><span class="es">En la app pulsa <b>Activar</b> y escribe el correo de tu compra y el código que empieza por HP (llega en el correo de Hotmart). Cada compra sirve en 2 equipos.</span><span class="en">In the app click <b>Activate</b> and enter your purchase email and the code that starts with HP (it is in the Hotmart email). Each purchase works on 2 devices.</span></p></details>
-  <details><summary><span class="es">¿Es una suscripción?</span><span class="en">Is it a subscription?</span></summary><p><span class="es">No. Es un pago único.</span><span class="en">No. It is a one-time payment.</span></p></details>
-  <details><summary><span class="es">¿De dónde salen las digitaciones?</span><span class="en">Where do the fingerings come from?</span></summary><p><span class="es">Las escalas mayores y menores usan la digitación estándar de los métodos de técnica. Para el resto, la app aplica las reglas clásicas: pulgar en teclas blancas, paso del pulgar tras el 3 o el 4, y un 4 por octava. Los acordes de 9ª a 13ª se reparten entre las dos manos, como en los métodos de piano moderno.</span><span class="en">Major and minor scales use the standard fingerings from technique methods. For the rest, the app applies the classic rules: thumb on white keys, thumb passing after 3 or 4, and one 4th finger per octave. Ninth to thirteenth chords are split between the hands, as in contemporary piano methods.</span></p></details>
-<!--contacto-->  <details><summary><span class="es">¿Y si no me sirve?</span><span class="en">What if it is not for me?</span></summary><p><span class="es">Pruébala antes de comprar. Si aun así no te convence, escríbenos dentro de los 15 días siguientes a la compra a atlasarmonico.app@gmail.com y te devolvemos el dinero.</span><span class="en">Try it before you buy. If it still is not right for you, email atlasarmonico.app@gmail.com within 15 days of purchase for a full refund.</span></p></details><!--/contacto-->
+<h2><span class="es">Preguntas frecuentes</span><span class="en">FAQ</span></h2>
+<details><summary><span class="es">¿En qué equipos funciona?</span><span class="en">What does it run on?</span></summary><p><span class="es">En Windows 10 y 11 con el programa (<a href="https://github.com/alexdavidsilvaocampo2-code/atlasarmonico/releases/latest/download/Atlas-Armonico-Windows-Setup.exe">descargar</a>), y en Mac, iPad, Linux y celulares con la app web en Chrome, Safari, Edge o Firefox, que también se puede instalar como app.</span><span class="en">On Windows 10 and 11 with the desktop app (<a href="https://github.com/alexdavidsilvaocampo2-code/atlasarmonico/releases/latest/download/Atlas-Armonico-Windows-Setup.exe">download</a>), and on Mac, iPad, Linux and phones with the web app in Chrome, Safari, Edge or Firefox, which can also be installed as an app.</span></p></details>
+<details><summary><span class="es">¿Necesito internet?</span><span class="en">Do I need the internet?</span></summary><p><span class="es">Solo una vez, para activar tu compra. Después funciona sin conexión.</span><span class="en">Only once, to activate your purchase. After that it works offline.</span></p></details>
+<details><summary><span class="es">¿Cómo funciona la prueba?</span><span class="en">How does the trial work?</span></summary><p><span class="es">Abres la app completa en el navegador o en Windows y haces 10 consultas (elegir un acorde, una escala, una tónica o transportar) durante máximo 2 horas, sin pagar ni registrarte. Después te pide comprarla.</span><span class="en">You open the full app in your browser or on Windows and make 10 queries (pick a chord, a scale, a root or transpose) within 2 hours, with no payment or sign-up. After that it asks you to buy.</span></p></details>
+<details><summary><span class="es">¿Cómo la desbloqueo después de comprar?</span><span class="en">How do I unlock it after buying?</span></summary><p><span class="es">En la app pulsa <b>Activar</b> y escribe el correo de tu compra y el código que empieza por HP (llega en el correo de Hotmart). Cada compra sirve en 2 equipos.</span><span class="en">In the app click <b>Activate</b> and enter your purchase email and the code that starts with HP (it is in the Hotmart email). Each purchase works on 2 devices.</span></p></details>
+<details><summary><span class="es">¿Es una suscripción?</span><span class="en">Is it a subscription?</span></summary><p><span class="es">No. Es un pago único.</span><span class="en">No. It is a one-time payment.</span></p></details>
+<details><summary><span class="es">¿De dónde salen las digitaciones?</span><span class="en">Where do the fingerings come from?</span></summary><p><span class="es">Las escalas mayores y menores usan la digitación estándar de los métodos de técnica. Para el resto, la app aplica las reglas clásicas: pulgar en teclas blancas, paso del pulgar tras el 3 o el 4, y un 4 por octava. Los acordes de 9ª a 13ª se reparten entre las dos manos, como en los métodos de piano moderno.</span><span class="en">Major and minor scales use the standard fingerings from technique methods. For the rest, the app applies the classic rules: thumb on white keys, thumb passing after 3 or 4, and one 4th finger per octave. Ninth to thirteenth chords are split between the hands, as in contemporary piano methods.</span></p></details>
+<!--contacto--> <details><summary><span class="es">¿Y si no me sirve?</span><span class="en">What if it is not for me?</span></summary><p><span class="es">Pruébala antes de comprar. Si aun así no te convence, escríbenos dentro de los 15 días siguientes a la compra a atlasarmonico.app@gmail.com y te devolvemos el dinero.</span><span class="en">Try it before you buy. If it still is not right for you, email atlasarmonico.app@gmail.com within 15 days of purchase for a full refund.</span></p></details><!--/contacto-->
 </section>
 
 <footer><div class="wrap"><span>© 2026 Atlas Armónico</span><!--contacto--><span>atlasarmonico.app@gmail.com</span><!--/contacto--></div></footer>
 
+<div class="sticky"><span class="t"><span class="es">Atlas Armónico · US$4.99 pago único · garantía de 15 días</span><span class="en">Atlas Armónico · US$4.99 one-time · 15-day guarantee</span></span><a class="btn primary sm" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar</span><span class="en">Buy</span></a></div>
+
 <script>
 (function(){
-  const root=document.documentElement;
-  let lang='en';
-  try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');if(p.lang==='es'||p.lang==='en')lang=p.lang}catch(e){}
-  function set(l){
-    lang=l;root.dataset.lang=l;root.lang=l;
-    document.querySelectorAll('#lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
-    try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');p.lang=l;localStorage.setItem('atlas-prefs',JSON.stringify(p))}catch(e){}
-  }
-  document.getElementById('lang').addEventListener('click',e=>{const b=e.target.closest('button');if(b){set(b.dataset.l);const f=document.querySelector('iframe');if(f)try{f.contentWindow.location.reload()}catch(err){}}});
-  set(lang);
-  /* Sin tienda configurada no se muestra ningún enlace de compra (nunca un enlace roto). */
-  document.querySelectorAll('[data-buy]').forEach(el=>{
-    if(/^https:\/\//.test(el.getAttribute('href')||''))return;
-    const s=document.createElement('span');s.className=el.className.replace('primary','')+' soon';
-    s.innerHTML='<span class="es">Muy pronto a la venta</span><span class="en">Coming soon</span>';el.replaceWith(s);
-  });
+const root=document.documentElement;
+let lang='en';
+try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');if(p.lang==='es'||p.lang==='en')lang=p.lang}catch(e){}
+function set(l){
+lang=l;root.dataset.lang=l;root.lang=l;
+document.querySelectorAll('#lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
+try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');p.lang=l;localStorage.setItem('atlas-prefs',JSON.stringify(p))}catch(e){}
+}
+document.getElementById('lang').addEventListener('click',e=>{const b=e.target.closest('button');if(b){set(b.dataset.l);const f=document.querySelector('iframe');if(f)try{f.contentWindow.location.reload()}catch(err){}}});
+set(lang);
+/* Sin tienda configurada no se muestra ningún enlace de compra (nunca un enlace roto). */
+document.querySelectorAll('[data-buy]').forEach(el=>{
+if(/^https:\/\//.test(el.getAttribute('href')||''))return;
+const s=document.createElement('span');s.className=el.className.replace('primary','')+' soon';
+s.innerHTML='<span class="es">Muy pronto a la venta</span><span class="en">Coming soon</span>';el.replaceWith(s);
+});
 })();
 </script>
 </body>
