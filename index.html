@@ -3,11 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Atlas Armónico</title>
+<title>Atlas Armónico | Piano Chords, Scales &amp; Fingering</title>
 <meta name="description" content="7-octave piano with 96 chords, 71 scales and fingering for both hands in all 21 keys. For Windows, Mac, iPad, Linux and phones.">
 <meta property="og:title" content="Atlas Armónico">
 <meta property="og:description" content="Cada acorde, cada escala y cada dedo, en un piano de 7 octavas. / Every chord, every scale, every finger on a 7-octave piano.">
 <meta name="theme-color" content="#0e0d0f">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexdavidsilvaocampo2-code.github.io/atlasarmonico/">
+<meta property="og:image" content="https://alexdavidsilvaocampo2-code.github.io/atlasarmonico/img/chord.jpg">
+<meta property="og:image:alt" content="Atlas Armónico showing a Cmaj7 chord, notes and fingering on its piano keyboard">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://alexdavidsilvaocampo2-code.github.io/atlasarmonico/">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +65,19 @@ h1 em{color:var(--brass);font-weight:500}
 .frame .bar i{width:10px;height:10px;border-radius:50%;background:#3a353c}
 .frame .bar span{margin-left:8px}
 .frame iframe{display:block;width:100%;height:min(1500px,190vh);border:0;background:var(--bg)}
+.frame iframe[hidden]{display:none}
+.demo-preview{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding:24px;background:var(--panel)}
+.demo-preview[hidden]{display:none}
+.demo-preview img{width:100%;height:auto;max-height:390px;object-fit:cover;object-position:top;border:1px solid var(--line);border-radius:12px}
+.demo-preview h2{font-size:36px;margin-top:0}
+.demo-preview p{color:var(--muted);font-size:14px}
+.demo-preview button{cursor:pointer;font-family:var(--f-body)}
+.demo-preview .open-full{display:inline-block;margin-top:14px;color:var(--brass);font-size:13px}
+.delivery-steps{list-style:none;counter-reset:delivery;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.delivery-steps li{counter-increment:delivery;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:22px}
+.delivery-steps li:before{content:'0' counter(delivery);display:block;font:600 34px var(--f-display);color:var(--brass);margin-bottom:10px}
+.delivery-steps h3{margin:0 0 10px;font-size:17px}.delivery-steps p{margin:0;font-size:14px;color:var(--muted)}
+@media(max-width:700px){.demo-preview{grid-template-columns:1fr;padding:18px}.demo-preview img{max-height:270px}.delivery-steps{grid-template-columns:1fr}}
 .felt{height:6px;background:linear-gradient(180deg,#a02c34,#5b141a)}
 .caption{text-align:center;color:var(--muted);font-size:14px;margin:14px 0 0}
 .gallery{display:grid;gap:22px}
@@ -118,7 +137,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <a class="logo" href="#">Atlas <em>Armónico</em></a>
 <div class="navr">
 <div class="seg" id="lang"><button data-l="es" aria-pressed="true">ES</button><button data-l="en" aria-pressed="false">EN</button></div>
-<a class="btn sm" href="app/index.html"><span class="es">Probar gratis</span><span class="en">Try it free</span></a>
+<a class="btn sm" href="#demo"><span class="es">Probar gratis</span><span class="en">Try it free</span></a>
 <a class="btn sm primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar</span><span class="en">Buy</span></a>
 </div>
 </div>
@@ -126,23 +145,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <header class="wrap hero">
 <span class="eyebrow"><span class="es">Piano de 7 octavas · Windows, Mac, iPad y celular</span><span class="en">7-octave piano · Windows, Mac, iPad and phone</span></span>
-<h1><span class="es">Cada acorde, cada escala <em>y cada dedo.</em></span><span class="en">Every chord, every scale, <em>every finger.</em></span></h1>
-<p class="lede"><span class="es">Ves una canción en internet y no sabes en qué tono está. Quieres armonizar una escala y no recuerdas qué acordes le tocan. Y cuando por fin encuentras las notas, dudas con qué dedo tocarlas. Atlas Armónico te lo muestra en un piano de 7 octavas: cualquier acorde o escala en los 21 tonos, los acordes que van con cada escala, el dedo de cada tecla en las dos manos, y un transportador que pasa cualquier canción a otro tono.</span><span class="en">You find a song online and can't tell what key it's in. You want to harmonize a scale and can't remember which chords belong to it. And when you finally have the notes, you're not sure which finger goes where. Atlas Armónico shows you on a 7-octave piano: any chord or scale in all 21 keys, the chords that fit each scale, the finger for every key with both hands, and a transposer that moves any song to another key.</span></p>
+<h1><span class="es">Ve las notas.<br>Encuentra <em>la digitación.</em></span><span class="en">See the notes.<br>Find <em>the fingering.</em></span></h1>
+<p class="lede"><span class="es">Explora 96 tipos de acordes y 71 escalas y modos en un piano interactivo de 7 octavas. Mira las notas y la digitación de ambas manos, escucha el resultado y transporta las progresiones de tus canciones a otro tono. Una referencia visual para estudiantes, profesores y músicos que acompañan.</span><span class="en">Explore 96 chord types and 71 scales and modes on an interactive 7-octave piano. See the notes and fingering for both hands, hear how they sound, and transpose your song progressions to another key. A visual reference for students, teachers and accompanying musicians.</span></p>
 <div class="ctas">
 <a class="btn primary" href="https://pay.hotmart.com/H108088291R" data-buy target="_blank" rel="noopener"><span class="es">Comprar por US$4.99</span><span class="en">Buy for US$4.99</span></a>
 <a class="btn" href="#demo"><span class="es">Probar gratis</span><span class="en">Try it free</span></a>
 <a class="btn" href="#videos"><span class="es">Ver videos con sonido</span><span class="en">Watch videos with sound</span></a>
 </div>
-<span class="fine"><span class="es">Pago único, sin suscripción. Pruébala completa gratis: 10 consultas o 2 horas.</span><span class="en">One-time payment, no subscription. Try the full app free: 10 queries or 2 hours.</span></span>
+<span class="fine"><span class="es">Pago único · 2 equipos · Español e inglés · 15 días para solicitar reembolso. Prueba: 10 consultas o 2 horas, lo que ocurra primero.</span><span class="en">One payment · 2 devices · English and Spanish · 15-day refund period. Trial: 10 queries or 2 hours, whichever comes first.</span></span>
 </header>
 
 <section class="wrap stage" id="demo">
 <div class="frame">
 <div class="bar"><i></i><i></i><i></i><span class="es">Prueba gratuita · tócala con el ratón o el teclado</span><span class="en">Free trial · play it with your mouse or keyboard</span></div>
 <div class="felt"></div>
-<iframe src="app/index.html" title="Atlas Armónico demo" loading="lazy" allow="autoplay"></iframe>
+<div class="demo-preview" id="demo-preview">
+<img src="img/chord.jpg" width="2000" height="1722" alt="Cmaj7 in the actual Atlas Armónico app, with notes and fingering" loading="lazy">
+<div><h2><span class="es">Prueba con una canción<br>que ya conoces.</span><span class="en">Try a song<br>you already know.</span></h2>
+<p><span class="es">Abre la app, elige un acorde y escucha sus notas. Después prueba una escala o pega una progresión para transportarla. La demostración se carga cuando decides abrirla.</span><span class="en">Open the app, choose a chord and hear its notes. Then try a scale or paste a progression to transpose it. The live demo loads when you choose to open it.</span></p>
+<button class="btn primary" id="start-demo" type="button" aria-controls="piano-demo" aria-expanded="false"><span class="es">Abrir prueba gratuita</span><span class="en">Open the free trial</span></button><br>
+<a class="open-full" href="app/index.html" target="_blank" rel="noopener"><span class="es">Abrir la app en una pestaña completa ↗</span><span class="en">Open the app in a full tab ↗</span></a>
+</div></div>
+<iframe id="piano-demo" title="Atlas Armónico demo" data-src="app/index.html" allow="autoplay" hidden></iframe>
 </div>
-<p class="caption"><span class="es">Es la app completa. Tienes 10 consultas gratis (o 2 horas); después, un solo pago la desbloquea para siempre.</span><span class="en">This is the full app. You get 10 free queries (or 2 hours); after that, one payment unlocks it forever.</span></p>
+<p class="caption"><span class="es">Prueba de la app completa: 10 consultas o 2 horas desde la primera apertura, lo que ocurra primero. La compra permite activarla en 2 equipos. Si ya agotaste la prueba, verás la opción de compra o activación.</span><span class="en">Full-app trial: 10 queries or 2 hours from the first opening, whichever comes first. A purchase activates 2 devices. If you have already used the trial, the app shows the purchase or activation options.</span></p>
 </section>
 
 <section class="wrap block" id="videos">
@@ -214,7 +240,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section class="wrap block" id="precio">
 <h2><span class="es">Precio</span><span class="en">Pricing</span></h2>
-<p class="sub"><span class="es">Menos que una partitura. Pagas una vez y es tuyo, con las actualizaciones de la versión 1.</span><span class="en">Less than a piece of sheet music. Pay once and it is yours, including every version 1 update.</span></p>
+<p class="sub"><span class="es">Pago único para usar Atlas Armónico en 2 equipos, con las actualizaciones de la versión 1.x incluidas. Los impuestos aplicables y el total en moneda local se muestran en Hotmart antes de pagar.</span><span class="en">One payment to use Atlas Armónico on 2 devices, including version 1.x updates. Applicable taxes and any local-currency total are shown at Hotmart checkout before payment.</span></p>
 <div class="prices">
 <div class="price main">
 <h3><span class="es">Licencia de por vida</span><span class="en">Lifetime licence</span></h3>
@@ -231,6 +257,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </div>
 </section>
 
+<section class="wrap block" id="delivery">
+<h2><span class="es">De la compra al teclado</span><span class="en">From purchase to piano</span></h2>
+<p class="sub"><span class="es">Recibes software descargable y bonos digitales. El acceso se libera cuando Hotmart aprueba el pago.</span><span class="en">You receive downloadable software and digital bonuses. Access is released after Hotmart approves payment.</span></p>
+<ol class="delivery-steps">
+<li><h3><span class="es">Recibe tu acceso</span><span class="en">Receive your access</span></h3><p><span class="es">Hotmart envía las instrucciones al correo de la compra. En tu compra encuentras la guía de inicio, los archivos y los 3 bonos PDF. Los pagos pendientes de confirmación pueden tardar más.</span><span class="en">Hotmart emails the instructions to your purchase address. Your purchase contains the quick-start guide, files and 3 PDF bonuses. Payment methods awaiting confirmation can take longer.</span></p></li>
+<li><h3><span class="es">Elige cómo abrirla</span><span class="en">Choose how to open it</span></h3><p><span class="es">Usa la versión web en tu navegador o descarga la aplicación para Windows o Mac. La versión web también funciona en iPad, Linux y celulares compatibles.</span><span class="en">Use the web version in your browser or download the Windows or Mac app. The web version also works on compatible iPad, Linux and mobile browsers.</span></p></li>
+<li><h3><span class="es">Activa tus 2 equipos</span><span class="en">Activate your 2 devices</span></h3><p><span class="es">Pulsa Activar e introduce el correo de la compra y el código de Hotmart que empieza por HP. Necesitas conexión para descargar y activar. Después de cargar la app y completar la activación, puedes usarla sin conexión.</span><span class="en">Click Activate and enter your purchase email and Hotmart code beginning with HP. Connect to download and activate. After the app has loaded and activation is complete, you can use it offline.</span></p></li>
+</ol>
+</section>
+
 <section class="wrap block">
 <h2><span class="es">Preguntas frecuentes</span><span class="en">FAQ</span></h2>
 <details><summary><span class="es">¿En qué equipos funciona?</span><span class="en">What does it run on?</span></summary><p><span class="es">En Windows 10 y 11 con el programa (<a href="https://github.com/alexdavidsilvaocampo2-code/atlasarmonico/releases/latest/download/Atlas-Armonico-Windows-Setup.exe">descargar</a>), y en Mac, iPad, Linux y celulares con la app web en Chrome, Safari, Edge o Firefox, que también se puede instalar como app.</span><span class="en">On Windows 10 and 11 with the desktop app (<a href="https://github.com/alexdavidsilvaocampo2-code/atlasarmonico/releases/latest/download/Atlas-Armonico-Windows-Setup.exe">download</a>), and on Mac, iPad, Linux and phones with the web app in Chrome, Safari, Edge or Firefox, which can also be installed as an app.</span></p></details>
@@ -239,7 +275,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <details><summary><span class="es">¿Cómo la desbloqueo después de comprar?</span><span class="en">How do I unlock it after buying?</span></summary><p><span class="es">En la app pulsa <b>Activar</b> y escribe el correo de tu compra y el código que empieza por HP (llega en el correo de Hotmart). Cada compra sirve en 2 equipos.</span><span class="en">In the app click <b>Activate</b> and enter your purchase email and the code that starts with HP (it is in the Hotmart email). Each purchase works on 2 devices.</span></p></details>
 <details><summary><span class="es">¿Es una suscripción?</span><span class="en">Is it a subscription?</span></summary><p><span class="es">No. Es un pago único.</span><span class="en">No. It is a one-time payment.</span></p></details>
 <details><summary><span class="es">¿De dónde salen las digitaciones?</span><span class="en">Where do the fingerings come from?</span></summary><p><span class="es">Las escalas mayores y menores usan la digitación estándar de los métodos de técnica. Para el resto, la app aplica las reglas clásicas: pulgar en teclas blancas, paso del pulgar tras el 3 o el 4, y un 4 por octava. Los acordes de 9ª a 13ª se reparten entre las dos manos, como en los métodos de piano moderno.</span><span class="en">Major and minor scales use the standard fingerings from technique methods. For the rest, the app applies the classic rules: thumb on white keys, thumb passing after 3 or 4, and one 4th finger per octave. Ninth to thirteenth chords are split between the hands, as in contemporary piano methods.</span></p></details>
-<!--contacto--> <details><summary><span class="es">¿Y si no me sirve?</span><span class="en">What if it is not for me?</span></summary><p><span class="es">Pruébala antes de comprar. Si aun así no te convence, escríbenos dentro de los 15 días siguientes a la compra a atlasarmonico.app@gmail.com y te devolvemos el dinero.</span><span class="en">Try it before you buy. If it still is not right for you, email atlasarmonico.app@gmail.com within 15 days of purchase for a full refund.</span></p></details><!--/contacto-->
+<!--contacto--> <details><summary><span class="es">¿Cómo solicito un reembolso?</span><span class="en">How do I request a refund?</span></summary><p><span class="es">Dispones de 15 días para solicitarlo mediante los detalles de tu compra o el <a href="https://refund.hotmart.com/" target="_blank" rel="noopener">portal de reembolsos de Hotmart</a>. Si necesitas ayuda con el acceso o la activación, escribe a <a href="mailto:atlasarmonico.app@gmail.com">atlasarmonico.app@gmail.com</a>. Incluye el nombre del producto y describe el problema; no envíes contraseñas ni datos de tarjeta. Se mantienen los derechos obligatorios que correspondan a tu compra.</span><span class="en">You have 15 days to request a refund through your purchase details or <a href="https://refund.hotmart.com/" target="_blank" rel="noopener">Hotmart's refund portal</a>. For access or activation help, email <a href="mailto:atlasarmonico.app@gmail.com">atlasarmonico.app@gmail.com</a>. Include the product name and describe the issue; do not send passwords or card details. Mandatory rights applicable to your purchase remain available.</span></p></details><!--/contacto-->
 </section>
 
 <footer><div class="wrap"><span>© 2026 Atlas Armónico</span><!--contacto--><span>atlasarmonico.app@gmail.com</span><!--/contacto--></div></footer>
@@ -249,6 +285,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <script>
 (function(){
 const root=document.documentElement;
+const demo=document.getElementById('piano-demo');
+function openDemo(){
+if(demo.hasAttribute('src'))return;
+demo.src=demo.dataset.src;
+demo.hidden=false;
+document.getElementById('demo-preview').hidden=true;
+document.getElementById('start-demo').setAttribute('aria-expanded','true');
+}
+document.getElementById('start-demo').addEventListener('click',openDemo);
+document.querySelectorAll('a[href="#demo"]').forEach(a=>a.addEventListener('click',openDemo));
 let lang='en';
 try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');if(p.lang==='es'||p.lang==='en')lang=p.lang}catch(e){}
 function set(l){
@@ -256,7 +302,7 @@ lang=l;root.dataset.lang=l;root.lang=l;
 document.querySelectorAll('#lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
 try{const p=JSON.parse(localStorage.getItem('atlas-prefs')||'{}');p.lang=l;localStorage.setItem('atlas-prefs',JSON.stringify(p))}catch(e){}
 }
-document.getElementById('lang').addEventListener('click',e=>{const b=e.target.closest('button');if(b){set(b.dataset.l);const f=document.querySelector('iframe');if(f)try{f.contentWindow.location.reload()}catch(err){}}});
+document.getElementById('lang').addEventListener('click',e=>{const b=e.target.closest('button');if(b){set(b.dataset.l);if(demo.hasAttribute('src'))try{demo.contentWindow.location.reload()}catch(err){}}});
 set(lang);
 /* Sin tienda configurada no se muestra ningún enlace de compra (nunca un enlace roto). */
 document.querySelectorAll('[data-buy]').forEach(el=>{
